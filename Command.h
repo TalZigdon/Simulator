@@ -5,6 +5,8 @@
 #ifndef SIMULATOR__COMMAND_H_
 #define SIMULATOR__COMMAND_H_
 #include "string"
+
+
 using namespace std;
 
 class Command {
