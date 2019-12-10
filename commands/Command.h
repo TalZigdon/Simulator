@@ -9,7 +9,7 @@ using namespace std;
 
 class Command {
  public:
-  int execute(string string);
+  virtual int execute(string string) = 0;
 };
 
 #endif //SIMULATOR__COMMAND_H_

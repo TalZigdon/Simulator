@@ -3,4 +3,4 @@ project(Simulator)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Simulator main.cpp commands/Command.cpp commands/Command.h commands/OpenServerCommand.cpp commands/OpenServerCommand.h)
+add_executable(Simulator main.cpp commands/Command.cpp commands/Command.h commands/OpenServerCommand.cpp commands/OpenServerCommand.h commands/CommentCommand.cpp commands/CommentCommand.h commands/DefineVarCommand.cpp commands/DefineVarCommand.h)
