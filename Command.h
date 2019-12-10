@@ -5,7 +5,7 @@
 #ifndef SIMULATOR__COMMAND_H_
 #define SIMULATOR__COMMAND_H_
 #include "string"
-
+#include "unordered_map"
 
 using namespace std;
 

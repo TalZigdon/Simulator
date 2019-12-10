@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "Command.h"
-#include "unordered_map"
+#include "map"
 #include "vector"
 
 int main(int argc, char **argv) {
@@ -30,7 +30,7 @@ vector<string> lexer(string fileName) {
         i++;
       }
       //insert the strings to the vector.
-      vec.insert(vec.begin(), temp);
+      vec.insert(vec.end(), temp);
       //initialize the parameters.
       temp = "";
       i++;
@@ -41,6 +41,6 @@ vector<string> lexer(string fileName) {
 
 }
 
-void parser(vector<string> array, unordered_map<string, Command> map) {
+void parser(vector<string> array, map <string, Command> m ) {
   // parse vector and execute through map
 }
