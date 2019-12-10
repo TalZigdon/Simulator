@@ -5,7 +5,8 @@
 #ifndef SIMULATOR_COMMANDS_COMMENTCOMMAND_H_
 #define SIMULATOR_COMMANDS_COMMENTCOMMAND_H_
 
-class CommentCommand {
+#include "Command.h"
+class CommentCommand : public Command{
 
 };
 

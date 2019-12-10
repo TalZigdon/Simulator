@@ -5,7 +5,8 @@
 #ifndef SIMULATOR_COMMANDS_DEFINEVARCOMMAND_H_
 #define SIMULATOR_COMMANDS_DEFINEVARCOMMAND_H_
 
-class DefineVarCommand {
+#include "Command.h"
+class DefineVarCommand : public Command {
 
 };
 

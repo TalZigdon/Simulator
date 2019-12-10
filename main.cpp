@@ -16,6 +16,6 @@ vector<string> lexer (FILE* f) {
   // create array of strings
 }
 
-void parser (vector<string> array, unordered_map<string, Command> a) {
+void parser (vector<string> array, unordered_map<string, Command> map) {
   //
 }
