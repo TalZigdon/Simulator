@@ -7,8 +7,8 @@
 
 
 int main(int argc, char** argv) {
-  std::cout << "Hello, World!" << std::endl;
-  std::cout << "yoel's version" << std::endl;
+  //create map here
+
   return 0;
 }
 
@@ -17,5 +17,5 @@ vector<string> lexer (FILE* f) {
 }
 
 void parser (vector<string> array, unordered_map<string, Command> map) {
-  //
+  // parse vector and execute through map
 }
