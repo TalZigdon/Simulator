@@ -5,8 +5,12 @@
 #include "unordered_map"
 #include "vector"
 
+vector<string> lexer(string fileName);
+
 int main(int argc, char **argv) {
-  //create map here
+  // create symbol map
+  // create map of commands
+  lexer(argv[1]);
 
   return 0;
 }
@@ -19,14 +23,19 @@ vector<string> lexer(string fileName) {
   fstream file;
   file.open(fileName, ios::in);
   if (!file) {
-    throw "bad file";
+    cout << "bad file" << endl;
   }
   //cross on the file line-line
   while (!file.eof()) {
     getline(file, line);
     //insert a string and split the strings by ' ', '(', ')', ','
     while (i < line.size()) {
-      while (line[i] != ' ' && line[i] != '(' && line[i] != ')' && line[i] != ',') {
+      // if the sign is "equal", we reaced a mathematical ass
+      if (line[i] == '=') {
+
+      }
+      while (i< line.size() && line[i] != '(' && line[i] != ')' && line[i] != ',') {
+
         temp += line[i];
         i++;
       }
@@ -38,6 +47,10 @@ vector<string> lexer(string fileName) {
     }
     //initialize i for the next line.(if there is more line)
     i = 0;
+  }
+
+  for(i=0; i< vec.size(); i++) {
+    cout << vec[i] << endl;
   }
 }
 
