@@ -6,7 +6,11 @@
 #define SIMULATOR_COMMANDS_OPENSERVERCOMMAND_H_
 
 #include "Command.h"
-
+#include <sys/socket.h>
+#include <string>
+#include <iostream>
+#include <unistd.h>
+#include <netinet/in.h>
 
 class OpenServerCommand : public Command {
  public:

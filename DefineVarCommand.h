@@ -7,6 +7,7 @@
 
 #include "Command.h"
 #include "list"
+
 class DefineVarCommand : public Command {
  public:
   list<Command> lst;
