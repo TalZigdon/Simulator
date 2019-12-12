@@ -4,8 +4,16 @@
 
 #ifndef SIMULATOR__PARSER_H_
 #define SIMULATOR__PARSER_H_
+using namespace std;
+#include "unordered_map"
+#include "Command.h"
+#include "vector"
 
 class Parser {
+ public:
+  Parser(vector<string> array);
+ private:
+  unordered_map <string,Command> map;
 
 };
 
