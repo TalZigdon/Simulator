@@ -3,6 +3,6 @@
 //
 
 #include "DefineVarCommand.h"
-int DefineVarCommand::execute(vector<string> vector) {
+int DefineVarCommand::execute(vector<string> vector, int index) {
   return 0;
 }

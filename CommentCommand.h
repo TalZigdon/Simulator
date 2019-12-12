@@ -8,7 +8,7 @@
 #include "Command.h"
 class CommentCommand : public Command{
  public:
-  int execute(vector<string> vector) override;
+  int execute(vector<string> vector, int index) override;
 
 };
 

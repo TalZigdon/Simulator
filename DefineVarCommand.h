@@ -10,7 +10,7 @@
 class DefineVarCommand : public Command {
  public:
   list<Command> lst;
-  int execute(vector<string> vector) override;
+  int execute(vector<string> vector, int index) override;
 };
 
 #endif //SIMULATOR_COMMANDS_DEFINEVARCOMMAND_H_

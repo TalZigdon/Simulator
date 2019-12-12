@@ -3,3 +3,6 @@
 //
 
 #include "OpenServerCommand.h"
+int OpenServerCommand::execute(vector<string> vector, int index) {
+  //open thread
+}

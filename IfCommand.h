@@ -8,7 +8,7 @@
 #include "ConditionCommand.h"
 class IfCommand : public ConditionCommand {
  public:
-  int execute(vector<string> vector) override;
+  int execute(vector<string> vector, int index) override;
   Command command;
 
 };

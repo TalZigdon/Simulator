@@ -3,6 +3,6 @@
 //
 
 #include "Command.h"
-int Command::execute(vector<string> vector) {
+int Command::execute(vector<string> vector, int index) {
   return 0;
 }

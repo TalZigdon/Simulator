@@ -10,7 +10,7 @@
 class WhileCommand : public ConditionCommand {
   list<Command> lst;
  public:
-  int execute(vector<string> vector) override;
+  int execute(vector<string> vector, int index) override;
 };
 
 #endif //SIMULATOR__WHILECOMMAND_H_

@@ -3,7 +3,7 @@
 //
 
 #include "WhileCommand.h"
-int WhileCommand::execute(vector<string> vector) {
+int WhileCommand::execute(vector<string> vector, int index) {
   while (flag){
     for(Command c : lst) {
       c.execute();

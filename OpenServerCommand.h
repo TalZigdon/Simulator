@@ -9,6 +9,8 @@
 
 
 class OpenServerCommand : public Command {
+ public:
+  int execute(vector<string> vector, int index) override;
 
 };
 

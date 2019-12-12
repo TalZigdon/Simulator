@@ -3,8 +3,8 @@
 //
 
 #include "IfCommand.h"
-int IfCommand::execute(vector<string> vector) {
-  if (flag){
-    command.execute();
+int IfCommand::execute(vector<string> vector, int index) {
+  if (flag) {
+    command.execute(vector, index);
   }
 }
