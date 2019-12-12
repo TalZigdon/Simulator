@@ -24,15 +24,19 @@ Lexer::Lexer( string fileName) {
     while (i < line.size()) {
       // if the sign is "equal", we reaced a mathematical ass
       while (i< line.size() && line[i] != '(' && line[i] != ')' && line[i] != ',') {
+        // if reached an assignment - split to var andd value
         if (line[i] == '=') {
           i++;
+          // skip space if exist
           if (line[i] == ' ') {
             i++;
           }
-          temp.erase(remove_if(temp.begin(), temp.end(), ::isspace), temp.end());
+          // insert var
+          temp.erase(std::remove(temp.begin(), temp.end(), '\t'), temp.end());
           vec.insert(vec.end(), temp);
+          // create and insert value
           temp = line.substr(i, line.size()-1);
-          temp.erase(remove_if(temp.begin(), temp.end(), ::isspace), temp.end());
+          temp.erase(std::remove(temp.begin(), temp.end(), '\t'), temp.end());
           vec.insert(vec.end(), temp);
           i = line.size();
           insertedLine = true;
@@ -45,7 +49,7 @@ Lexer::Lexer( string fileName) {
 
       if (!insertedLine) {
         //insert the strings to the vector.
-        temp.erase(remove_if(temp.begin(), temp.end(), ::isspace), temp.end());
+        temp.erase(std::remove(temp.begin(), temp.end(), '\t'), temp.end());
         vec.insert(vec.end(), temp);
         //initialize the parameters.
         temp = "";
