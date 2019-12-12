@@ -28,7 +28,6 @@ class Parser {
     commands["connectControlClient"] = new ConnectControlClientCommand();
     commands["if"] = new IfCommand();
     commands["sleep"] = new SleepCommand();
-    commands["var"] = new
   }
 
 };
