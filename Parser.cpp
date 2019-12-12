@@ -12,4 +12,6 @@ Parser::Parser(vector<string> array) {
     if (map.count(array[index]) != 0) {
       Command c = map[array[index]];
       index += c.execute(array, index);
+    }
+  }
 }

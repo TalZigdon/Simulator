@@ -56,8 +56,6 @@ int OpenServerCommand::execute(vector<string> vector, int index) {
     char buffer[1024] = {0};
     int valread = read(client_socket, buffer, 1024);
     std::cout << buffer << std::endl;;
-      }
-    }
     return index + 2;
   }
 }
