@@ -2,6 +2,7 @@
 #include <fstream>
 #include "Command.h"
 #include "map"
+#include "unordered_map"
 #include "vector"
 
 int main(int argc, char **argv) {
@@ -38,9 +39,8 @@ vector<string> lexer(string fileName) {
     //initialize i for the next line.(if there is more line)
     i = 0;
   }
-
 }
 
-void parser(vector<string> array, map <string, Command> m ) {
+void parser(vector<string> array, map <string, Command> map ) {
   // parse vector and execute through map
 }
