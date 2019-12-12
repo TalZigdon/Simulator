@@ -11,9 +11,11 @@
 #include <iostream>
 #include <unistd.h>
 #include <netinet/in.h>
+#include <thread>
 
 class OpenServerCommand : public Command {
  public:
+  int client_socket;
   int execute(vector<string> vector, int index) override;
 
 };
