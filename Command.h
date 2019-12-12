@@ -11,7 +11,7 @@ using namespace std;
 
 class Command {
  public:
-  virtual int execute(vector<string> vector);
+  virtual int execute(vector<string> vector, int index);
 };
 
 #endif //SIMULATOR__COMMAND_H_
