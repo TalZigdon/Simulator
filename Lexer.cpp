@@ -82,9 +82,7 @@ Lexer::Lexer( string fileName) {
           temp1 = temp.substr(check2, 2);
           vec.insert(vec.end(), temp1);
           // insert sim
-          temp1 = temp.substr(check2+3, temp.size() - (check2+3));
-          temp1.erase(std::remove_if(temp1.begin(), temp1.end(), ::isspace), temp1.end());
-          vec.insert(vec.end(), temp1);
+          temp1 = temp.substr(check2+2, temp.size()-(check2+2));
         }
         else {
           vec.insert(vec.end(), temp);

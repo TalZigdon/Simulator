@@ -8,6 +8,3 @@ int IfCommand::execute(vector<string> vector, int index) {
     command.execute(vector, index);
   }
 }
-IfCommand::IfCommand(Data *data) {
-  this->data = data;
-}

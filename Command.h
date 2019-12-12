@@ -7,13 +7,11 @@
 #include "string"
 #include "unordered_map"
 #include "vector"
-#include "Data.h"
 using namespace std;
 
 class Command {
  public:
   virtual int execute(vector<string> vector, int index);
-  virtual Command( Data * data) {}
 };
 
 #endif //SIMULATOR__COMMAND_H_

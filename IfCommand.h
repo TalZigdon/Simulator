@@ -8,8 +8,6 @@
 #include "ConditionCommand.h"
 class IfCommand : public ConditionCommand {
  public:
-  Data* data;
-  IfCommand(Data* data);
   int execute(vector<string> vector, int index) override;
   Command command;
 

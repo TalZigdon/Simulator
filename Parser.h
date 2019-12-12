@@ -11,7 +11,7 @@ using namespace std;
 
 class Parser {
  public:
-  Parser(vector<string> array, unordered_map<string, Command> map);
+  Parser(vector<string> array);
  private:
   unordered_map <string,Command> map;
 

@@ -20,8 +20,8 @@ void parser(vector<string> array, map<string, Command> map) {
   // executing every command
   while (index < array.size()) {
     if (map.count(array[index]) != 0) {
-      //Command c = map[array[index]];
-      //index += c.execute(array, index);
+      Command c = map[array[index]];
+      index += c.execute(array, index);
     }
   }
 }

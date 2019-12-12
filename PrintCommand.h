@@ -9,9 +9,7 @@
 #include "DefineVarCommand.h"
 class PrintCommand : public Command{
  public:
-  Data* data;
   DefineVarCommand* vars;
-  PrintCommand(Data* data);
   int execute(vector<string> vector, int index) override;
 
 };
