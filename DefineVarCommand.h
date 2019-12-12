@@ -7,10 +7,13 @@
 
 #include "Command.h"
 #include "list"
+#include "Data.h"
 
 class DefineVarCommand : public Command {
  public:
   list<Command> lst;
+  Data * data;
+  DefineVarCommand(Data * data);
   int execute(vector<string> vector, int index) override;
 };
 

@@ -10,6 +10,8 @@
 class WhileCommand : public ConditionCommand {
   list<Command> lst;
  public:
+  Data* data;
+  WhileCommand(Data* data);
   int execute(vector<string> vector, int index) override;
 };
 

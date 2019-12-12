@@ -6,3 +6,6 @@
 int DefineVarCommand::execute(vector<string> vector, int index) {
   return 0;
 }
+DefineVarCommand::DefineVarCommand(Data* data) {
+  this->data = data;
+}

@@ -3,8 +3,8 @@
 //
 
 #include <cstring>
-#include "ConnectControlClientCommant.h"
-int ConnectControlClientCommant::execute(vector<string> vector, int index) {
+#include "ConnectControlClientCommand.h"
+int ConnectControlClientCommand::execute(vector<string> vector, int index) {
   {
     //create socket
     int client_socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -50,4 +50,8 @@ int ConnectControlClientCommant::execute(vector<string> vector, int index) {
 
     return index + 3;
   }
+}
+ConnectControlClientCommand::ConnectControlClientCommand(Data *data) {
+  this->data = data;
+
 }
