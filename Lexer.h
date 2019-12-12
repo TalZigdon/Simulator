@@ -7,14 +7,14 @@
 using namespace std;
 #include "vector"
 #include "string"
+#include "iostream"
+#include "fstream"
 
 class Lexer {
  public:
   Lexer(string fileName);
  private:
   vector<string> array;
-
-
 };
 
 #endif //SIMULATOR__LEXER_H_

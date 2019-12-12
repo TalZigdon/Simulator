@@ -2,6 +2,7 @@
 // Created by tal on 12.12.2019.
 //
 
+#include <algorithm>
 #include "Lexer.h"
 Lexer::Lexer( string fileName) {
   int i = 0;
@@ -28,8 +29,10 @@ Lexer::Lexer( string fileName) {
           if (line[i] == ' ') {
             i++;
           }
+          temp.erase(remove_if(temp.begin(), temp.end(), ::isspace));
           vec.insert(vec.end(), temp);
           temp = line.substr(i, line.size()-1);
+          temp.erase(remove_if(temp.begin(), temp.end(), ::isspace));
           vec.insert(vec.end(), temp);
           i = line.size();
           insertedLine = true;
@@ -42,7 +45,7 @@ Lexer::Lexer( string fileName) {
 
       if (!insertedLine) {
         //insert the strings to the vector.
-        remove_if(temp.begin(), temp.end(), isspace);
+        temp.erase(remove_if(temp.begin(), temp.end(), ::isspace));
         vec.insert(vec.end(), temp);
         //initialize the parameters.
         temp = "";
@@ -51,6 +54,10 @@ Lexer::Lexer( string fileName) {
     }
     //initialize i for the next line.(if there is more line)
     i = 0;
+  }
+
+  for (i = 0; i < vec.size() ; i++) {
+    cout << vec[i] << endl;
   }
 
   this->array = vec;
