@@ -26,7 +26,7 @@ vector<string> lexer(string fileName) {
     getline(file, line);
     //insert a string and split the strings by ' ', '(', ')', ','
     while (i < line.size()) {
-      while (line[i] != ' ' && line[i] != '(' && line[i] != ')' && line[i] != ',' ) {
+      while (line[i] != ' ' && line[i] != '(' && line[i] != ')' && line[i] != ',') {
         temp += line[i];
         i++;
       }
@@ -41,15 +41,15 @@ vector<string> lexer(string fileName) {
   }
 }
 
-void parser(vector<string> array, map <string, Command> map ) {
+void parser(vector<string> array, map<string, Command> map) {
   // parse vector and execute through map
   int index = 0;
 
   // executing every command
   while (index < array.size()) {
-    Command c = map[array[index]];
-    if (c != NULL) {
-      index += c.execute();
+    if (map.count(array[index]) != 0) {
+      Command c = map[array[index]];
+      index += c.execute(array);
     }
   }
 }
