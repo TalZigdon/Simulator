@@ -49,7 +49,7 @@ void parser(vector<string> array, map <string, Command> map ) {
   while (index < array.size()) {
     Command c = map[array[index]];
     if (c != NULL) {
-      index += c.execute()
+      index += c.execute();
     }
   }
 }
