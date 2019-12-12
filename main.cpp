@@ -43,4 +43,13 @@ vector<string> lexer(string fileName) {
 
 void parser(vector<string> array, map <string, Command> map ) {
   // parse vector and execute through map
+  int index = 0;
+
+  // executing every command
+  while (index < array.size()) {
+    Command c = map[array[index]];
+    if (c != NULL) {
+      index += c.execute();
+    }
+  }
 }
