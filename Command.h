@@ -6,12 +6,12 @@
 #define SIMULATOR__COMMAND_H_
 #include "string"
 #include "unordered_map"
-
+#include "vector"
 using namespace std;
 
 class Command {
  public:
-  virtual int execute(string string) = 0;
+  virtual int execute(vector<string> vector) = 0;
 };
 
 #endif //SIMULATOR__COMMAND_H_

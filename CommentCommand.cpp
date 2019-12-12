@@ -3,3 +3,6 @@
 //
 
 #include "CommentCommand.h"
+int CommentCommand::execute(vector<string> vector) {
+  return 0;
+}
