@@ -29,10 +29,10 @@ Lexer::Lexer( string fileName) {
           if (line[i] == ' ') {
             i++;
           }
-          temp.erase(remove_if(temp.begin(), temp.end(), ::isspace));
+          temp.erase(remove_if(temp.begin(), temp.end(), ::isspace), temp.end());
           vec.insert(vec.end(), temp);
           temp = line.substr(i, line.size()-1);
-          temp.erase(remove_if(temp.begin(), temp.end(), ::isspace));
+          temp.erase(remove_if(temp.begin(), temp.end(), ::isspace), temp.end());
           vec.insert(vec.end(), temp);
           i = line.size();
           insertedLine = true;
@@ -45,7 +45,7 @@ Lexer::Lexer( string fileName) {
 
       if (!insertedLine) {
         //insert the strings to the vector.
-        temp.erase(remove_if(temp.begin(), temp.end(), ::isspace));
+        temp.erase(remove_if(temp.begin(), temp.end(), ::isspace), temp.end());
         vec.insert(vec.end(), temp);
         //initialize the parameters.
         temp = "";
