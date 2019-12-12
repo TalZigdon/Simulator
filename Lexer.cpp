@@ -82,7 +82,7 @@ Lexer::Lexer( string fileName) {
           temp1 = temp.substr(check2, 2);
           vec.insert(vec.end(), temp1);
           // insert sim
-          temp1 = temp.substr(check2+2, )
+          temp1 = temp.substr(check2+2, fdf)
         }
         else {
           vec.insert(vec.end(), temp);
