@@ -13,7 +13,6 @@ using namespace std;
 class Lexer {
  public:
   Lexer(string fileName);
- private:
   vector<string> array;
 };
 

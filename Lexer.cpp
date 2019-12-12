@@ -50,7 +50,44 @@ Lexer::Lexer( string fileName) {
       if (!insertedLine) {
         //insert the strings to the vector.
         temp.erase(std::remove(temp.begin(), temp.end(), '\t'), temp.end());
-        vec.insert(vec.end(), temp);
+        auto check = temp.find("while");
+        auto check1 = temp.find("var");
+        // if it is a while command - split correctly
+        if (check != string::npos) {
+          // insert while
+          string temp1 = temp.substr(check, 5);
+          vec.insert(vec.end(), temp1);
+          // insert condition
+          auto check2 = temp.size()-2*temp1.size();
+          temp1 = temp.substr(check+6, check2);
+//          temp1.erase(std::remove_if(temp1.begin(), temp1.end(), ::isspace), temp1.end());
+          vec.insert(vec.end(), temp1);
+          // insert the {
+          temp1 = temp.substr(check2-1, 1);
+        }
+          // if it is a var command - split correctly
+        else if (check1 != string::npos) {
+          // insert "val"
+          string temp1 = temp.substr(check1, 3);
+          vec.insert(vec.end(), temp1);
+          // insert name of val
+          auto check2 = temp.find("<-");
+          if (check2 == string::npos) {
+            check2 = temp.find("->");
+          }
+          temp1 = temp.substr(check1+4, check2-(check1+4));
+          temp1.erase(std::remove_if(temp1.begin(), temp1.end(), ::isspace), temp1.end());
+          vec.insert(vec.end(), temp1);
+          // insert arrow
+          temp1 = temp.substr(check2, 2);
+          vec.insert(vec.end(), temp1);
+          // insert sim
+          temp1 = temp.substr(check2+2, )
+        }
+        else {
+          vec.insert(vec.end(), temp);
+        }
+        //vec.insert(vec.end(), temp);
         //initialize the parameters.
         temp = "";
         i++;
