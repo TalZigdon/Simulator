@@ -8,12 +8,28 @@ using namespace std;
 #include "unordered_map"
 #include "Command.h"
 #include "vector"
+#include "DefineVarCommand.h"
+#include "PrintCommand.h"
+#include "OpenServerCommand.h"
+#include "ConnectControlClientCommand.h"
+#include "IfCommand.h"
+#include "SleepCommand.h"
 
 class Parser {
+  unordered_map <string, Command*> commands;
  public:
   Parser(vector<string> array);
  private:
   unordered_map <string,Command> map;
+  void addCommandsToMap(){
+    commands["var"] = new DefineVarCommand();
+    commands["print"] = new PrintCommand();
+    commands["openDataServer"] = new OpenServerCommand();
+    commands["connectControlClient"] = new ConnectControlClientCommand();
+    commands["if"] = new IfCommand();
+    commands["sleep"] = new SleepCommand();
+    commands["var"] = new
+  }
 
 };
 

@@ -2,8 +2,8 @@
 // Created by tal on 12.12.2019.
 //
 
-#ifndef SIMULATOR__CONNECTCONTROLCLIENTCOMMANT_H_
-#define SIMULATOR__CONNECTCONTROLCLIENTCOMMANT_H_
+#ifndef SIMULATOR__CONNECTCONTROLCLIENTCOMMAND_H_
+#define SIMULATOR__CONNECTCONTROLCLIENTCOMMAND_H_
 #include <sys/socket.h>
 #include <string>
 #include <iostream>
@@ -12,9 +12,9 @@
 #include <arpa/inet.h>
 #include "thread"
 #include "Command.h"
-class ConnectControlClientCommant : public Command{
+class ConnectControlClientCommand : public Command{
  public:
   int execute(vector<string> vector, int index) override;
 };
 
-#endif //SIMULATOR__CONNECTCONTROLCLIENTCOMMANT_H_
+#endif //SIMULATOR__CONNECTCONTROLCLIENTCOMMAND_H_
