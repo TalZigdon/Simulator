@@ -15,7 +15,9 @@
 
 class OpenServerCommand : public Command {
  public:
+  Data* data;
   int client_socket;
+  OpenServerCommand(Data* data);
   int execute(vector<string> vector, int index) override;
 
 };

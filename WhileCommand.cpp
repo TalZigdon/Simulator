@@ -10,3 +10,7 @@ int WhileCommand::execute(vector<string> vector, int index) {
     }
   }
 }
+WhileCommand::WhileCommand(Data *data) {
+  this->data = data;
+
+}

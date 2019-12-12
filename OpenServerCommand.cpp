@@ -59,3 +59,6 @@ int OpenServerCommand::execute(vector<string> vector, int index) {
     return index + 2;
   }
 }
+OpenServerCommand::OpenServerCommand(Data *data) {
+  this->data = data;
+}

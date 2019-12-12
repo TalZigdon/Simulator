@@ -3,7 +3,7 @@
 //
 
 #include "Parser.h"
-Parser::Parser(vector<string> array) {
+Parser::Parser(vector<string> array, unordered_map<string,Command> map) {
   // parse vector and execute through map
   int index = 0;
 
