@@ -10,6 +10,7 @@ int DefineVarCommand::execute(vector<string> vector, int index) {
   if(vector[index + 2] == "->")
     simIsEffectedByVar = true;
   // define value through client-server from sim
+
   Var *v = new Var(value, name, simIsEffectedByVar);
   Variables::setVar(vector[index], *v);
   return (index + 4);
