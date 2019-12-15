@@ -12,4 +12,5 @@ bool Var::IsInput() const {
 }
 const string &Var::GetSim() const {
   return sim;
+
 }
