@@ -7,11 +7,14 @@
 #include <string>
 using namespace std;
 class Var {
- public:
-  Var(int value, const string &sim, bool is_input);
   int value;
   string sim;
   bool isInput;
+ public:
+  Var(int value, const string &sim, bool is_input);
+  const string &GetSim() const;
+  int GetValue() const;
+  bool IsInput() const;
 
 };
 
