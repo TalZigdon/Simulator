@@ -20,7 +20,7 @@ class Variables {
   double doShuntingYard(string str);
   void addVarToMap(string str);
   static Variables *getInstance() {
-    if (instance == NULL)
+    if (!instance)
       instance = new Variables();
     return instance;
   }
@@ -36,5 +36,8 @@ class Variables {
  protected:
   virtual ~Variables() {};
 };
+
+
+
 
 #endif //SIMULATOR__VARIABLES_H_

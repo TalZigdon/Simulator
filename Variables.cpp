@@ -3,6 +3,8 @@
 //
 
 #include "Variables.h"
+Variables *Variables::instance = 0;
+
 double Variables::doShuntingYard(string str) {
  i1->shuntingYard(str);
  return i1->createExp()->calculate();
