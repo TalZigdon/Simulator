@@ -4,13 +4,13 @@
 
 #include "DefineVarCommand.h"
 int DefineVarCommand::execute(vector<string> vector, int index) {
-  bool flag = false;
+  bool simIsEffectedByVar = false;
   string name = vector[index + 1];
   double value;
   if(vector[index + 2] == "->")
-    flag = true;
-  //value = shuntingYard(vector[index + 3]);
-  Var * v = new Var(value, name, flag);
+    simIsEffectedByVar = true;
+  // define value through client-server from sim
+  Var *v = new Var(value, name, simIsEffectedByVar);
   Variables::setVar(vector[index], *v);
   return (index + 4);
 }
