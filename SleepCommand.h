@@ -4,7 +4,8 @@
 
 #ifndef SIMULATOR__SLEEPCOMMAND_H_
 #define SIMULATOR__SLEEPCOMMAND_H_
-
+#include <chrono>
+#include <thread>
 #include "Command.h"
 class SleepCommand : public Command {
  public:

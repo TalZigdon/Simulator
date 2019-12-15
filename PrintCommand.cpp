@@ -4,5 +4,6 @@
 
 #include "PrintCommand.h"
 int PrintCommand::execute(vector<string> vector, int index) {
-  return Command::execute(vector, index);
+  cout<< vector[index + 1] << endl;
+  return (index + 2);
 }

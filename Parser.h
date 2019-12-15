@@ -14,9 +14,10 @@ using namespace std;
 #include "ConnectControlClientCommand.h"
 #include "IfCommand.h"
 #include "SleepCommand.h"
-
+#include "ShuntingYard.h"
 class Parser {
   unordered_map <string, Command*> commands;
+  Interpreter interpreter_;
  public:
   Parser(vector<string> array);
  private:
@@ -29,7 +30,6 @@ class Parser {
     commands["if"] = new IfCommand();
     commands["sleep"] = new SleepCommand();
   }
-
 };
 
 #endif //SIMULATOR__PARSER_H_

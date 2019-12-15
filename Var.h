@@ -8,6 +8,7 @@
 using namespace std;
 class Var {
  public:
+  Var(int value, const string &sim, bool is_input);
   int value;
   string sim;
   bool isInput;

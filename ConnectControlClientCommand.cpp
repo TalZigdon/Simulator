@@ -18,6 +18,7 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     sockaddr_in address; //in means IP4
     address.sin_family = AF_INET;//IP4
     address.sin_addr.s_addr = inet_addr((const char *) vector[index + 1].c_str());  //the localhost address
+    ///////shunting yard need here!!
     address.sin_port = htons(stoi(vector[index + 2]));
     //we need to convert our number (both port & localhost)
     // to a number that the network understands.

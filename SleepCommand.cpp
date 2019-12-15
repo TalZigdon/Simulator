@@ -4,5 +4,6 @@
 
 #include "SleepCommand.h"
 int SleepCommand::execute(vector<string> vector, int index) {
-  return Command::execute(vector, index);
+  std::this_thread::sleep_for(std::chrono::milliseconds(stoi(vector[index + 1])));
+  return (index + 2);
 }

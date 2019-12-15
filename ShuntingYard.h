@@ -6,10 +6,12 @@
 #define SHUNTINGYARD__SHUNTINGYARD_H_
 
 #include "Expression.h"
+#include "Var.h"
 #include <string>
 #include <map>
 #include <queue>
 #include <stack>
+#include <bits/unordered_map.h>
 
 using namespace std;
 

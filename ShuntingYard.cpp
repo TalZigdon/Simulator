@@ -3,11 +3,12 @@
 //
 
 #include "ShuntingYard.h"
-
+#include "unordered_map"
 #include <utility>
 #include <iostream>
 #include <cstring>
 #include "regex"
+#include "Var.h"
 using namespace std;
 
 Value::Value(const double va) : val(va) {}

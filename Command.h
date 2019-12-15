@@ -7,6 +7,9 @@
 #include "string"
 #include "unordered_map"
 #include "vector"
+#include <iostream>
+#include "Variables.h"
+#include "ShuntingYard.h"
 using namespace std;
 
 class Command {

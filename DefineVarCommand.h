@@ -7,10 +7,9 @@
 
 #include "Command.h"
 #include "list"
-
+#include "Var.h"
 class DefineVarCommand : public Command {
  public:
-  list<Command> lst;
   int execute(vector<string> vector, int index) override;
 };
 

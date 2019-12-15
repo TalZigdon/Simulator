@@ -4,9 +4,19 @@
 
 #include "WhileCommand.h"
 int WhileCommand::execute(vector<string> vector, int index) {
+  int counter = index;
+  bool signThatItsTheFirstLoop = true;
+  int saveTheNumberOfTheLastIndexInWhile = index;
   while (flag){
     for(Command c : lst) {
-      //c.execute();
+      counter = c.execute(vector, counter);
     }
+    if(signThatItsTheFirstLoop){
+      signThatItsTheFirstLoop = false;
+      saveTheNumberOfTheLastIndexInWhile = counter;
+    }
+    //initialize for the next for loop
+    counter = index;
   }
+  return saveTheNumberOfTheLastIndexInWhile;
 }

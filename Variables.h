@@ -10,7 +10,7 @@
 // a singleton class
 class Variables {
  private:
-  unordered_map<string, Var> map;
+  static unordered_map<string, Var> map;
   static Variables *instance;
  public:
   //check if the object is already exists, if not,make a new one, else return the last one.
@@ -19,13 +19,13 @@ class Variables {
       instance = new Variables;
     return instance;
   }
-  void setVar(string v, Var var) {
+  static void setVar(string v, Var var) {
     map[v] = var;
   }
-  unordered_map<string, Var> getMap() {
-    return this->map;
+  static unordered_map<string, Var> getMap() {
+    return map;
   }
-  Var &getVar(string v) {
+  static Var &getVar(string v) {
     return map[v];
   }
  protected:
