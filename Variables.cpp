@@ -3,7 +3,13 @@
 //
 
 #include "Variables.h"
-void Variables::addVarToInterpreter(string name, string val) {
-  i1.
-
+double Variables::doShuntingYard(string str) {
+ i1.shuntingYard(str);
+ return i1.createExp()->calculate();
 }
+
+void Variables::addVarToMap(string str) {
+  i1.generateVarAndVal(str);
+}
+
+
