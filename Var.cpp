@@ -3,7 +3,11 @@
 //
 
 #include "Var.h"
-Var::Var(int value, const string &sim, bool is_input) : value(value), sim(sim), isInput(is_input) {}
+Var::Var(int value1, const string &sim1, bool is_input){
+  value = value1;
+  sim = sim1;
+  isInput = is_input;
+}
 int Var::GetValue() const {
   return value;
 }

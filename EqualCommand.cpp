@@ -4,5 +4,5 @@
 
 #include "EqualCommand.h"
 int EqualCommand::execute(vector<string> vector, int index) {
-  Variables::getInstance()->(vector[index]);
+  Variables::getInstance()->addVarToMap(vector[index]);
 }

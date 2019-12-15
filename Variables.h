@@ -12,26 +12,25 @@
 class Variables {
  private:
   Interpreter *i1;
-  unordered_map<string, Var> map;
+  unordered_map<string, Var*> map;
   static Variables *instance;
- public:
   Variables();
  public:
   //check if the object is already exists, if not,make a new one, else return the last one.
   double doShuntingYard(string str);
   void addVarToMap(string str);
   static Variables *getInstance() {
-    if (!instance)
-      instance = new Variables;
+    if (instance == NULL)
+      instance = new Variables();
     return instance;
   }
-  void setVar(string v, Var var) {
+  void setVar(string v, Var* var) {
     map[v] = var;
   }
-  unordered_map<string, Var> getMap() {
+  unordered_map<string, Var*> getMap() {
     return map;
   }
-  Var &getVar(string v) {
+  Var *getVar(string v) {
     return map[v];
   }
  protected:

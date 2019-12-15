@@ -11,6 +11,6 @@ int DefineVarCommand::execute(vector<string> vector, int index) {
     simIsEffectedByVar = true;
 //initialize the value to 0
   Var *v = new Var(0, name, simIsEffectedByVar);
-  Variables::getInstance()->setVar(vector[index], *v);
+  Variables::getInstance()->setVar(vector[index], v);
   return (index + 4);
 }
