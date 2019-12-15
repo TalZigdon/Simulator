@@ -11,9 +11,11 @@
 // a singleton class
 class Variables {
  private:
-  Interpreter i1;
+  Interpreter *i1;
   unordered_map<string, Var> map;
   static Variables *instance;
+ public:
+  Variables();
  public:
   //check if the object is already exists, if not,make a new one, else return the last one.
   double doShuntingYard(string str);
