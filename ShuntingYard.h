@@ -105,6 +105,7 @@ class Interpreter {
   Expression* createExp();
   void generateVarAndVal(string token);
   void setVariables(string vars1);
+  //void addVariable(string name, string val);
 };
 
 

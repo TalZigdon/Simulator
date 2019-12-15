@@ -3,3 +3,8 @@
 //
 
 #include "EqualCommand.h"
+int EqualCommand::execute(vector<string> vector, int index) {
+   string name, value;
+   name = vector[index];
+   value = Variables::getInstance().
+}

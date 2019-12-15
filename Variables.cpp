@@ -3,3 +3,7 @@
 //
 
 #include "Variables.h"
+void Variables::addVarToInterpreter(string name, string val) {
+  i1.
+
+}
