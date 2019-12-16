@@ -13,6 +13,7 @@ class Variables {
  private:
   Interpreter *i1;
   unordered_map<string, Var*> map;
+  unordered_map<string,double> symbols;
   static Variables *instance;
   Variables();
  public:
@@ -24,6 +25,7 @@ class Variables {
       instance = new Variables();
     return instance;
   }
+  void InitializeSymbols();
   void setVar(string v, Var* var) {
     map[v] = var;
   }

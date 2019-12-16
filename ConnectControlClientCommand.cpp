@@ -3,7 +3,23 @@
 //
 
 #include <cstring>
+#include <mutex>
 #include "ConnectControlClientCommand.h"
+std::mutex mutex_lock1;
+void SendAndGetMassages(int client_socket) {
+    while (true) {
+        mutex_lock1.lock();
+        //int is_sent = send(client_socket, hello, strlen(hello), 0);
+        //if (is_sent == -1) {
+        //  std::cout << "Error sending message" << std::endl;
+        //} else {
+        //  std::cout << "Hello message sent to server" << std::endl;
+        char buffer[1024] = {0};
+        int valread = read(client_socket, buffer, 1024);
+        std::cout << buffer << std::endl;
+        mutex_lock1.unlock();
+    }
+}
 int ConnectControlClientCommand::execute(vector<string> vector, int index) {
   {
     //create socket
@@ -40,6 +56,7 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     } else {
       std::cout << "Hello message sent to server" << std::endl;
     }
+    thread thread(SendAndGetMassages, client_socket);
 //    thread thread1([client_socket](){
 //      while(true) {
 //        char buffer[1024] = {0};

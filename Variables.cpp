@@ -18,4 +18,8 @@ Variables::Variables() {
   this->i1 = new Interpreter();
 }
 
+void Variables::InitializeSymbols() {
+
+}
+
 
