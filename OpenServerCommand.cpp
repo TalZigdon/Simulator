@@ -9,9 +9,9 @@ std::mutex mutex_lock;
 void readAndWriteToServer(int client_socket){
     while(true) {
         mutex_lock.lock();
-        char *hello = "Hello, I can hear you! \n";
-        send(client_socket, hello, strlen(hello), 0);
-        std::cout << "Hello message sent\n" << std::endl;
+        //char *hello = "Hello, I can hear you! \n";
+        //send(client_socket, hello, strlen(hello), 0);
+        //std::cout << "Hello message sent\n" << std::endl;
         char buffer[1024] = {0};
         int valread = read(client_socket, buffer, 1024);
         std::cout << buffer << std::endl;

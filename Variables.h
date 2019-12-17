@@ -13,7 +13,8 @@ class Variables {
  private:
   Interpreter *i1;
   unordered_map<string, Var*> map;
-  unordered_map<string,double> symbols;
+  unordered_map<string,double> symbolsDirections;
+  vector<double> symbolsValues;
   static Variables *instance;
   Variables();
  public:
