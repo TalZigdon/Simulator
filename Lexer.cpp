@@ -9,14 +9,12 @@ Lexer::Lexer( string fileName) {
   string line, temp = "";
   vector<string> vec;
   fstream file;
-  bool insertedLine = false;
 
   file.open(fileName, ios::in);
   if (!file) {
     cout << "bad file" << endl;
   }
 
-  bool equalInserted = false;
 
   //cross on the file line-line
   while (!file.eof()) {
@@ -113,11 +111,11 @@ Lexer::Lexer( string fileName) {
     i = 0;
   }
 
-
+/*
   for (i = 0; i < vec.size(); i++) {
     cout << vec[i] << endl;
   }
-
+*/
 
   this->array = vec;
 }
