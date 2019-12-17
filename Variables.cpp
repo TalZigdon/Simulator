@@ -20,28 +20,29 @@ Variables::Variables() {
 
 void Variables::InitializeSymbols() {
     symbolsDirections["/instrumentation/airspeed-indicator/indicated-speed-kt"] = 0;
-    symbolsDirections["/instrumentation/altimeter/indicated-altitude-ft"] = 1;
-    symbolsDirections["/instrumentation/altimeter/pressure-alt-ft"] = 2;
-    symbolsDirections["/instrumentation/attitude-indicator/indicated-pitch-deg"] = 3;
-    symbolsDirections["/instrumentation/attitude-indicator/indicated-roll-deg"] = 4;
-    symbolsDirections["/instrumentation/attitude-indicator/internal-pitch-deg"] = 5;
-    symbolsDirections["/instrumentation/attitude-indicator/internal-roll-deg"] = 6;
-    symbolsDirections["/instrumentation/encoder/indicated-altitude-ft"] = 7;
-    symbolsDirections["/instrumentation/encoder/pressure-alt-ft"] = 8;
-    symbolsDirections["/instrumentation/gps/indicated-altitude-ft"] = 9;
-    symbolsDirections["/instrumentation/gps/indicated-ground-speed-kt"] = 10;
-    symbolsDirections["/instrumentation/gps/indicated-vertical-speed"] = 11;
-    symbolsDirections["/instrumentation/heading-indicator/indicated-heading-deg"] = 12;
-    symbolsDirections["/instrumentation/magnetic-compass/indicated-heading-deg"] = 13;
-    symbolsDirections["/instrumentation/slip-skid-ball/indicated-slip-skid"] = 14;
-    symbolsDirections["/instrumentation/turn-indicator/indicated-turn-rate"] = 15;
-    symbolsDirections["/instrumentation/vertical-speed-indicator/indicated-speed-fpm"] = 16;
-    symbolsDirections["/controls/flight/aileron"] = 17;
-    symbolsDirections["/controls/flight/elevator"] = 18;
-    symbolsDirections["/controls/flight/rudder"] = 19;
-    symbolsDirections["/controls/flight/flaps"] = 20;
-    symbolsDirections["/controls/engines/engine/throttle"] = 21;
-    symbolsDirections["/engines/engine/rpm"] = 22;
+    symbolsDirections["/instrumentation/heading-indicator/offset-deg"] = 1;
+    symbolsDirections["/instrumentation/altimeter/indicated-altitude-ft"] = 2;
+    symbolsDirections["/instrumentation/altimeter/pressure-alt-ft"] = 3;
+    symbolsDirections["/instrumentation/attitude-indicator/indicated-pitch-deg"] = 4;
+    symbolsDirections["/instrumentation/attitude-indicator/indicated-roll-deg"] = 5;
+    symbolsDirections["/instrumentation/attitude-indicator/internal-pitch-deg"] = 6;
+    symbolsDirections["/instrumentation/attitude-indicator/internal-roll-deg"] = 7;
+    symbolsDirections["/instrumentation/encoder/indicated-altitude-ft"] = 8;
+    symbolsDirections["/instrumentation/encoder/pressure-alt-ft"] = 9;
+    symbolsDirections["/instrumentation/gps/indicated-altitude-ft"] = 10;
+    symbolsDirections["/instrumentation/gps/indicated-ground-speed-kt"] = 11;
+    symbolsDirections["/instrumentation/gps/indicated-vertical-speed"] = 12;
+    symbolsDirections["/instrumentation/heading-indicator/indicated-heading-deg"] = 13;
+    symbolsDirections["/instrumentation/magnetic-compass/indicated-heading-deg"] = 14;
+    symbolsDirections["/instrumentation/slip-skid-ball/indicated-slip-skid"] = 15;
+    symbolsDirections["/instrumentation/turn-indicator/indicated-turn-rate"] = 16;
+    symbolsDirections["/instrumentation/vertical-speed-indicator/indicated-speed-fpm"] = 17;
+    symbolsDirections["/controls/flight/aileron"] = 18;
+    symbolsDirections["/controls/flight/elevator"] = 19;
+    symbolsDirections["/controls/flight/rudder"] = 20;
+    symbolsDirections["/controls/flight/flaps"] = 21;
+    symbolsDirections["/controls/engines/engine/throttle"] = 22;
+    symbolsDirections["/engines/engine/rpm"] = 23;
 }
 // a function that update the symbols value from the server!
 void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
