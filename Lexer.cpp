@@ -9,6 +9,7 @@ Lexer::Lexer( string fileName) {
   string line, temp = "";
   vector<string> vec;
   fstream file;
+  bool insertedLine = false;
 
   file.open(fileName, ios::in);
   if (!file) {
