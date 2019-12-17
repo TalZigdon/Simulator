@@ -8,7 +8,7 @@
 
 std::mutex mutex_lock;
 void splitIntoVector(string buffer, vector<double> vec) {
-    string delimiterOfAllText = ";", delimiterOfSmallText = "=";
+    string delimiterOfAllText = ",";
     size_t posOfAllText = 0;
     string tokenOfAllText;
     while ((posOfAllText = buffer.find(delimiterOfAllText)) != string::npos) {
@@ -16,7 +16,6 @@ void splitIntoVector(string buffer, vector<double> vec) {
         buffer.erase(0, posOfAllText + delimiterOfAllText.length());
         vec.push_back(stoi(tokenOfAllText));
     }
-
 }
 void readFromServer(int client_socket) {
     vector<double> vectorOfValuesFromServer;
@@ -80,6 +79,7 @@ int OpenServerCommand::execute(vector<string> vector, int index) {
 
         close(socketfd); //closing the listening socket
         thread thread1(readFromServer, client_socket);
+        Variables::getInstance();
         thread1.join();
         //reading from client
 /*    char *hello = "Hello, I can hear you! \n";
