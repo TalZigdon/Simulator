@@ -43,5 +43,11 @@ void Variables::InitializeSymbols() {
     symbolsDirections["/controls/engines/engine/throttle"] = 21;
     symbolsDirections["/engines/engine/rpm"] = 22;
 }
+// a function that update the symbols value from the server!
+void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
+    for(int i = 0; i< vec.size(); i++) {
+        symbolsValues[i] = vec[i];
+    }
+}
 
 

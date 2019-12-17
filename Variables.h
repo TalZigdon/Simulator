@@ -26,6 +26,7 @@ class Variables {
       instance = new Variables();
     return instance;
   }
+  void UpdateSymbolsValueFromServer(vector<double> vec);
   void InitializeSymbols();
   void setVar(string v, Var* var) {
     map[v] = var;

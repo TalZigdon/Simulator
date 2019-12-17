@@ -2,6 +2,7 @@
 #include "map"
 #include "vector"
 #include "Lexer.h"
+#include "Parser.h"
 
 vector<string> lexer(string fileName);
 
@@ -9,6 +10,7 @@ int main(int argc, char **argv) {
   // create symbol map
   // create map of commands
   Lexer lex = Lexer(argv[1]);
+  Parser* parser1 = new Parser(lex.array);
 
   return 0;
 }

@@ -16,6 +16,7 @@ using namespace std;
 #include "SleepCommand.h"
 #include "ShuntingYard.h"
 #include "EqualCommand.h"
+#include "WhileCommand.h"
 class Parser {
   unordered_map <string, Command*> commands;
  public:
@@ -30,6 +31,14 @@ class Parser {
     commands["if"] = new IfCommand();
     commands["sleep"] = new SleepCommand();
     commands["="] = new EqualCommand();
+    commands["while"] = new WhileCommand();
+  /*  //map["var"] = DefineVarCommand();
+    map["print"] = PrintCommand();
+    map["openDataServer"] = OpenServerCommand();
+    map["if"] = IfCommand();
+    map["sleep"] = SleepCommand();
+    map["="] = *(commands["="]);
+    map["while"] = *(commands["while"]);*/
   }
 };
 

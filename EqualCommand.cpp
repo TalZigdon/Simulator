@@ -6,3 +6,4 @@
 int EqualCommand::execute(vector<string> vector, int index) {
   Variables::getInstance()->addVarToMap(vector[index]);
 }
+
