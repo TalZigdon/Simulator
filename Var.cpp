@@ -5,7 +5,7 @@
 #include "Var.h"
 Var::Var(int value1, const string &sim1, bool is_input){
   value = value1;
-    simPath = sim1;
+  simPath = sim1;
   bindedFromRightToLeft = is_input;
 }
 int Var::GetValue() const {
