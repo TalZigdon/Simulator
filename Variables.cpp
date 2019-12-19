@@ -204,9 +204,3 @@ void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
         symbolsValues[i] = vec[i];
     }
 }
-
-Interpreter *Variables::getI1() const {
-    return i1;
-}
-
-
