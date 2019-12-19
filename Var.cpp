@@ -20,7 +20,7 @@ const string &Var::GetSim() const {
 void Var::setValue(int value) {
     Var::value = value;
 }
-
+//
 void Var::setSim(const string &sim) {
     Var::simPath = sim;
 }
