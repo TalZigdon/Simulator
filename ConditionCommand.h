@@ -12,6 +12,7 @@ class ConditionCommand : public Command{
 //  string string;
   bool isConditionIsTrue(std::string stringOfCondition);
 
+
 };
 
 #endif //SIMULATOR__CONDITIONCOMMAND_H_
