@@ -5,6 +5,7 @@
 #ifndef SIMULATOR__VARIABLES_H_
 #define SIMULATOR__VARIABLES_H_
 #include <unordered_map>
+#include <mutex>
 #include "string"
 #include "Var.h"
 #include "ShuntingYard.h"
@@ -12,9 +13,10 @@
 class Variables {
  private:
   Interpreter *i1;
-  unordered_map<string, Var*> map;
-  unordered_map<string, Var*> symbolsDirections;
+  unordered_map<string, Var*> programMap;
+  unordered_map<string, Var*> simMap;
   vector<double> symbolsValues;
+  mutex mapLock;
   static Variables *instance;
   Variables();
  public:
@@ -26,17 +28,27 @@ class Variables {
       instance = new Variables();
     return instance;
   }
+
   void UpdateSymbolsValueFromServer(vector<double> vec);
+
   void InitializeSymbols();
+
   void setVar(string v, Var* var) {
-    map[v] = var;
+    programMap[v] = var;
   }
-  unordered_map<string, Var*> getMap() {
-    return map;
+
+  unordered_map<string, Var*> getProgramMap() {
+    return programMap;
   }
+
+  unordered_map<string, Var*> getSimMap(){
+    return simMap;
+  }
+
   Var *getVar(string v) {
-    return map[v];
+    return programMap[v];
   }
+
  protected:
   virtual ~Variables() {};
 };
