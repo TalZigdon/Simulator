@@ -13,7 +13,7 @@
     <name>time_warp</name>
 	<type>float</type>
 	<format>%f</format>
-    <node>/sim/time/warp</node>
+    <node>/simPath/time/warp</node>
 	</chunk>
 	<chunk>
     <name>switches_magnetos</name>
@@ -187,7 +187,7 @@
     <name>c172p_brake-parking</name>
 	<type>float</type>
 	<format>%f</format>
-    <node>/sim/model/c172p/brake-parking</node>
+    <node>/simPath/model/c172p/brake-parking</node>
 	</chunk>
 	<chunk>
     <name>engine_primer</name>

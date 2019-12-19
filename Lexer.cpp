@@ -94,8 +94,8 @@ Lexer::Lexer(string fileName) {
                         // insert arrow
                         temp1 = temp.substr(check2, 2);
                         vec.insert(vec.end(), temp1);
-                        // insert sim
-                        check2 = temp.find("sim");
+                        // insert simPath
+                        check2 = temp.find("simPath");
                         temp1 = temp.substr(check2, 3);
                         vec.insert(vec.end(), temp1);
                     }

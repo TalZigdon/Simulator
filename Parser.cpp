@@ -38,7 +38,7 @@ void readFromServer(int client_socket) {
 Parser::Parser(vector<string> array) {
     // parse vector and execute through map
     addCommandsToMap();
-    int index = 2;
+    int index = 5;
     Command *c;
     // executing every command
     while (index < array.size()) {
