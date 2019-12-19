@@ -15,13 +15,13 @@ class Var {
   const string &GetSim() const;
   int GetValue() const;
 
-    bool isBindedFromRightToLeft() const;
+  bool isBindedFromRightToLeft() const;
 
-    void setValue(int value);
+  void setValue(int value);
 
-    void setSim(const string &sim);
+  void setSim(const string &sim);
 
-    void setBindedFromRightToLeft(bool bindedFromRightToLeft);
+  void setBindedFromRightToLeft(bool bindedFromRightToLeft);
 
 };
 

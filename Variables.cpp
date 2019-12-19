@@ -23,7 +23,7 @@ void Variables::InitializeSymbols() {
             new Var(0, "/instrumentation/airspeed-indicator/indicated-speed-kt", false);
 
     symbolsDirections["time_warp"] =
-            new Var(0, "/simPath/time/warp", false);
+            new Var(0, "/sim/time/warp", false);
 
     symbolsDirections["switches_magnetos"] =
             new Var(0, "/controls/switches/magnetos", false);
@@ -110,7 +110,7 @@ void Variables::InitializeSymbols() {
             new Var(0, "/controls/flight/speedbrake", false);
 
     symbolsDirections["c172p_brake-parking"] =
-            new Var(0, "/simPath/model/c172p/brake-parking", false);
+            new Var(0, "/sim/model/c172p/brake-parking", false);
 
     symbolsDirections["engine_primer"] =
             new Var(0, "/controls/engines/engine/primer", false);
