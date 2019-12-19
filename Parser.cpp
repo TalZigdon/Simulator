@@ -4,7 +4,6 @@
 
 #include <mutex>
 #include "Parser.h"
-#include "thread"
 
 /*std::mutex mutex_lock;
 

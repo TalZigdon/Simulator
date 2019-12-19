@@ -50,7 +50,7 @@ int OpenServerCommand::execute(vector<string> vector, int index) {
         address.sin_family = AF_INET;
         address.sin_addr.s_addr = INADDR_ANY; //give me any IP allocated for my machine
         /////shunting yard need here!!!
-        address.sin_port = htons(stoi(vector[index + 1]));
+        address.sin_port = htons(Variables::getInstance()->doShuntingYard(vector[index + 1]));
         //we need to convert our number
         // to a number that the network understands.
 
