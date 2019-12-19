@@ -3,22 +3,23 @@
 //
 
 #include "WhileCommand.h"
+#include "Parser.h"
 int WhileCommand::execute(vector<string> vector, int index) {
 
-  int counter = index + 1;
-  bool signThatItsTheFirstLoop = true;
-  int saveTheNumberOfTheLastIndexInWhile = 1;
-
+  //unordered_map<string,Command> map = Parser::getMap();
+  int counter = index + 3;
+  Command * c;
+  int saveTheNumberOfTheLastIndexInWhile = index;
+  flag = IsConditionIsTrue(vector[index + 1]);
   while (flag) {
-    for (Command c : lst) {
-      counter += c.execute(vector, counter);
-    }
-    if (signThatItsTheFirstLoop) {
-      signThatItsTheFirstLoop = false;
-      saveTheNumberOfTheLastIndexInWhile += counter;
-    }
+      counter += c->execute(vector, counter);
     //initialize for the next for loop
     counter = index + 1;
+    flag = IsConditionIsTrue(vector[index + 1]);
   }
-  return saveTheNumberOfTheLastIndexInWhile;
+  //check how much indexes are in the while!
+  while(vector[saveTheNumberOfTheLastIndexInWhile] != "}"){
+    saveTheNumberOfTheLastIndexInWhile++;
+  }
+  return saveTheNumberOfTheLastIndexInWhile - index + 1;
 }

@@ -4,7 +4,7 @@
 
 #include "ConditionCommand.h"
 
-bool ConditionCommand::isConditionIsTrue(std::string stringOfCondition) {
+bool ConditionCommand::IsConditionIsTrue(std::string stringOfCondition) {
   string DelimitierOfEqual = "==";
   string DelimitierOfBigOrEqual = ">=";
   string DelimitierOfSmallOrEqual = "<=";

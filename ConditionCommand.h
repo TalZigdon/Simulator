@@ -10,7 +10,7 @@ class ConditionCommand : public Command{
  public:
   bool flag;
 //  string string;
-  bool isConditionIsTrue(std::string stringOfCondition);
+  bool IsConditionIsTrue(std::string stringOfCondition);
 
 
 };

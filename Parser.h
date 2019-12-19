@@ -21,6 +21,7 @@ class Parser {
   unordered_map<string, Command *> commands;
  public:
   Parser(vector<string> array);
+  unordered_map<string,Command*> getMap();
  private:
   unordered_map<string, Command> map;
   void addCommandsToMap() {

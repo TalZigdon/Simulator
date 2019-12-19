@@ -38,7 +38,7 @@ void readFromServer(int client_socket) {
 Parser::Parser(vector<string> array) {
     // parse vector and execute through map
     addCommandsToMap();
-    int index = 0;
+    int index = 133;
     Command *c;
     // executing every command
     while (index < array.size()) {
@@ -58,5 +58,8 @@ Parser::Parser(vector<string> array) {
         cout << "after first execute" << index << endl;
     }
     Variables::getInstance()->thr1.join();
+}
+unordered_map<string, Command *> Parser::getMap() {
+  return this->commands;
 }
 

@@ -4,7 +4,10 @@
 
 #include "PrintCommand.h"
 int PrintCommand::execute(vector<string> vector, int index) {
-  // check if parameter
-  cout<< vector[index + 1] << endl;
+  char ch = 34;
+  if (vector[index + 1].find(ch) != string::npos)
+    cout << vector[index + 1] << endl;
+  else
+    cout << Variables::getInstance()->doShuntingYard(vector[index + 1]) << endl;
   return 2;
 }
