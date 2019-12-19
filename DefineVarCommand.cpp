@@ -25,5 +25,5 @@ int DefineVarCommand::execute(vector<string> vector, int index) {
 ////initialize the value to 0
 //  Var *v = new Var(0, name, simIsEffectedByVar);
 //  Variables::getInstance()->setVar(vector[index], v);
-  return (index + 4);
+  return 5;
 }

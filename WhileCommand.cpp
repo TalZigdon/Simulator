@@ -4,6 +4,7 @@
 
 #include "WhileCommand.h"
 int WhileCommand::execute(vector<string> vector, int index) {
+
   int counter = index + 1;
   bool signThatItsTheFirstLoop = true;
   int saveTheNumberOfTheLastIndexInWhile = 1;

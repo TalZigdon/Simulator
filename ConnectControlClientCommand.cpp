@@ -53,7 +53,7 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     if (is_sent == -1) {
       std::cout<<"Error sending message"<<std::endl;
     } else {
-      std::cout<<"Hello message sent to server" <<std::endl;
+      Variables::getInstance()->thr2 = thread(SendAndGetMassages, client_socket);
     }
 
     char buffer[1024] = {0};
@@ -61,7 +61,6 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     std::cout<<buffer<<std::endl;
 
     close(client_socket);
-
-    return 0;
+    return 3;
   }
 }
