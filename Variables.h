@@ -12,7 +12,11 @@
 class Variables {
  private:
   Interpreter *i1;
-  unordered_map<string, Var*> map;
+public:
+    Interpreter *getI1() const;
+
+private:
+    unordered_map<string, Var*> map;
   unordered_map<string,double> symbolsDirections;
   vector<double> symbolsValues;
   static Variables *instance;

@@ -24,6 +24,9 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
   {
     //create socket
     int client_socket = socket(AF_INET, SOCK_STREAM, 0);
+    if (client_socket < 0) {
+        cout << "socket creation on client error" << endl;
+    }
     if (client_socket == -1) {
       //error
       std::cerr << "Could not create a socket" << std::endl;

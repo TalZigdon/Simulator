@@ -7,6 +7,7 @@ int WhileCommand::execute(vector<string> vector, int index) {
   int counter = index;
   bool signThatItsTheFirstLoop = true;
   int saveTheNumberOfTheLastIndexInWhile = index;
+
   while (flag){
     for(Command c : lst) {
       counter = c.execute(vector, counter);

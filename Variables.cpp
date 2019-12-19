@@ -51,4 +51,8 @@ void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
     }
 }
 
+Interpreter *Variables::getI1() const {
+    return i1;
+}
+
 

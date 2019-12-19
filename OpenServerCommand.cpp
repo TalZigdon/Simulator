@@ -80,7 +80,7 @@ int OpenServerCommand::execute(vector<string> vector, int index) {
         close(socketfd); //closing the listening socket
         thread thread1(readFromServer, client_socket);
         Variables::getInstance();
-        thread1.join();
+        thread1.detach();
         //reading from client
 /*    char *hello = "Hello, I can hear you! \n";
     send(client_socket, hello, strlen(hello), 0);
