@@ -9,6 +9,7 @@
 #include "string"
 #include "Var.h"
 #include "ShuntingYard.h"
+#include "thread"
 // a singleton class
 class Variables {
  private:
@@ -20,6 +21,7 @@ class Variables {
   static Variables *instance;
   Variables();
  public:
+  thread thr1;
   //check if the object is already exists, if not,make a new one, else return the last one.
   double doShuntingYard(string str);
   void addVarToMap(string str);

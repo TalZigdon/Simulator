@@ -57,5 +57,6 @@ Parser::Parser(vector<string> array) {
         }
         cout << "after first execute" << index << endl;
     }
+    Variables::getInstance()->thr1.join();
 }
 

@@ -78,16 +78,9 @@ int OpenServerCommand::execute(vector<string> vector, int index) {
         }
 
         close(socketfd); //closing the listening socket
-        thread thread1(readFromServer, client_socket);
-        Variables::getInstance();
-        thread1.detach();
-        //reading from client
-/*    char *hello = "Hello, I can hear you! \n";
-    send(client_socket, hello, strlen(hello), 0);
-    std::cout << "Hello message sent\n" << std::endl;
-    char buffer[1024] = {0};
-    int valread = read(client_socket, buffer, 1024);
-    std::cout << buffer << std::endl;*/
+        //thread thread1(readFromServer, client_socket);
+       // Variables::getInstance()->thr1 = thread (readFromServer,client_socket);
+        //thread1.detach();
         return 2;
     }
 }

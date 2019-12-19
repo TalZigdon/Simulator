@@ -3,10 +3,12 @@
 //
 
 #include "Var.h"
+#include "Variables.h"
 Var::Var(int value1, const string &sim1, bool is_input) {
     value = value1;
     simPath = sim1;
     bindedFromRightToLeft = is_input;
+    Variables::getInstance();
 }
 int Var::GetValue() const {
     return value;
