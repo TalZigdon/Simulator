@@ -8,7 +8,7 @@
 using namespace std;
 class Var {
   int value;
-  string sim;
+  string simPath;
   bool isInput;
  public:
   Var(int value, const string &sim, bool is_input);

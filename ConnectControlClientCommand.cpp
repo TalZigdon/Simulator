@@ -59,16 +59,8 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     } else {
       std::cout << "Hello message sent to server" << std::endl;
     }
-    //thread thread(SendAndGetMassages, client_socket);
-//    thread thread1([client_socket](){
-//      while(true) {
-//        char buffer[1024] = {0};
-//        int valread = read(client_socket, buffer, 1024);
-//        std::cout << buffer << std::endl;
-//      }
-//     // close(client_socket);
-//    });
-
-    return index + 3;
+    thread thread(SendAndGetMassages, client_socket);
+    thread.detach();
+    return 3;
   }
 }

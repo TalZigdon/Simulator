@@ -38,22 +38,18 @@ void readFromServer(int client_socket) {
 Parser::Parser(vector<string> array) {
     // parse vector and execute through map
     addCommandsToMap();
-    int index = 0;
+    int index = 2;
     Command *c;
-    //pthread_t thread1;
     // executing every command
     while (index < array.size()) {
         // if it is an equal command line
+      //  if(Variables::getInstance()->getMap().count(array[index]) > 0) {
+        //    Variables::getInstance().
+       // }
         if (array[index].find("=") != string::npos) {
             c = commands["="];
             index += c->execute(array, index);
-        }/* else if (array[index] == "openDataServer") {
-            client = commands["openDataServer"]->execute(array, index);
-            cout << "after first execute" << index << endl;
-            thread thread1(readFromServer,client);
-
-            index += 2;
-        }*/ else {
+        } else {
             if (commands.count(array[index]) > 0) {
                 c = commands[array[index]];
                 index += c->execute(array, index);
