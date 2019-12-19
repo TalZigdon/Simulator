@@ -8,7 +8,6 @@
 #include "ConditionCommand.h"
 #include "list"
 class WhileCommand : public ConditionCommand {
-  list<Command> lst;
  public:
   int execute(vector<string> vector, int index) override;
 };

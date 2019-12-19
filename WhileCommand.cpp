@@ -4,22 +4,19 @@
 
 #include "WhileCommand.h"
 #include "Parser.h"
-int WhileCommand::execute(vector<string> vector, int index) {
-
-  //unordered_map<string,Command> map = Parser::getMap();
-  int counter = index + 3;
-  Command * c;
-  int saveTheNumberOfTheLastIndexInWhile = index;
-  flag = IsConditionIsTrue(vector[index + 1]);
+int WhileCommand::execute(vector<string> vector1, int index) {
+  vector<string> tempStringToParsInWhile;
+  Command *c;
+  int saveTheNumberOfTheLastIndexInWhile = index + 2;
+  while (vector1[saveTheNumberOfTheLastIndexInWhile] != "}") {
+    saveTheNumberOfTheLastIndexInWhile++;
+    tempStringToParsInWhile.push_back(vector1[saveTheNumberOfTheLastIndexInWhile]);
+  }
+  flag = IsConditionIsTrue(vector1[index + 1]);
   while (flag) {
-      counter += c->execute(vector, counter);
-    //initialize for the next for loop
-    counter = index + 1;
-    flag = IsConditionIsTrue(vector[index + 1]);
+    new Parser(tempStringToParsInWhile);
+    flag = IsConditionIsTrue(vector1[index + 1]);
   }
   //check how much indexes are in the while!
-  while(vector[saveTheNumberOfTheLastIndexInWhile] != "}"){
-    saveTheNumberOfTheLastIndexInWhile++;
-  }
   return saveTheNumberOfTheLastIndexInWhile - index + 1;
 }
