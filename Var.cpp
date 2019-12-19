@@ -6,14 +6,14 @@
 Var::Var(int value1, const string &sim1, bool is_input){
   value = value1;
   sim = sim1;
-    bindedFromRightToLeft = is_input;
+  isInput = is_input;
 }
 int Var::GetValue() const {
-  return value;
+    return value;
 }
 
 const string &Var::GetSim() const {
-  return sim;
+    return simPath;
 
 }
 

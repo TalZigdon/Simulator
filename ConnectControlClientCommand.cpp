@@ -24,6 +24,9 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
   {
     //create socket
     int client_socket = socket(AF_INET, SOCK_STREAM, 0);
+    if (client_socket < 0) {
+        cout << "socket creation on client error" << endl;
+    }
     if (client_socket == -1) {
       //error
       std::cerr << "Could not create a socket" << std::endl;
@@ -56,16 +59,8 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     } else {
       std::cout << "Hello message sent to server" << std::endl;
     }
-    //thread thread(SendAndGetMassages, client_socket);
-//    thread thread1([client_socket](){
-//      while(true) {
-//        char buffer[1024] = {0};
-//        int valread = read(client_socket, buffer, 1024);
-//        std::cout << buffer << std::endl;
-//      }
-//     // close(client_socket);
-//    });
-
-    return index + 3;
+    thread thread(SendAndGetMassages, client_socket);
+    thread.detach();
+    return 3;
   }
 }

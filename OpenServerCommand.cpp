@@ -50,7 +50,7 @@ int OpenServerCommand::execute(vector<string> vector, int index) {
         address.sin_family = AF_INET;
         address.sin_addr.s_addr = INADDR_ANY; //give me any IP allocated for my machine
         /////shunting yard need here!!!
-        address.sin_port = htons(stoi(vector[index + 1]));
+        address.sin_port = htons(Variables::getInstance()->doShuntingYard(vector[index + 1]));
         //we need to convert our number
         // to a number that the network understands.
 
@@ -80,7 +80,7 @@ int OpenServerCommand::execute(vector<string> vector, int index) {
         close(socketfd); //closing the listening socket
         thread thread1(readFromServer, client_socket);
         Variables::getInstance();
-        thread1.join();
+        thread1.detach();
         //reading from client
 /*    char *hello = "Hello, I can hear you! \n";
     send(client_socket, hello, strlen(hello), 0);
@@ -88,6 +88,6 @@ int OpenServerCommand::execute(vector<string> vector, int index) {
     char buffer[1024] = {0};
     int valread = read(client_socket, buffer, 1024);
     std::cout << buffer << std::endl;*/
-        return index + 2;
+        return 2;
     }
 }

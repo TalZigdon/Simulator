@@ -6,16 +6,16 @@
 Variables *Variables::instance = 0;
 
 double Variables::doShuntingYard(string str) {
-    i1->shuntingYard(str);
-    return i1->createExp()->calculate();
+ i1->shuntingYard(str);
+ return i1->createExp()->calculate();
 }
 
 void Variables::addVarToMap(string str) {
-    i1->generateVarAndVal(str);
+  i1->generateVarAndVal(str);
 }
 
 Variables::Variables() {
-    this->i1 = new Interpreter();
+  this->i1 = new Interpreter();
 }
 
 void Variables::InitializeSymbols() {
@@ -127,7 +127,6 @@ void Variables::InitializeSymbols() {
     symbolsDirections["engine_rpm"] =
             new Var(0, "/engines/engine/rpm", false);
 }
-
 // a function that update the symbols value from the server!
 void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
     symbolsDirections["airspeed-indicator_indicated-speed-kt"]->setValue(vec[0]);
@@ -201,6 +200,13 @@ void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
     symbolsDirections["switches_master-alt"]->setValue(vec[34]);
 
     symbolsDirections["engine_rpm"]->setValue(vec[35]);
+    for (int i = 0; i < vec.size(); i++) {
+        symbolsValues[i] = vec[i];
+    }
+}
+
+Interpreter *Variables::getI1() const {
+    return i1;
 }
 
 
