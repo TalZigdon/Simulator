@@ -12,7 +12,7 @@
 #include <arpa/inet.h>
 #include "thread"
 #include "Command.h"
-class ConnectControlClientCommand : public Command{
+class ConnectControlClientCommand : public Command {
  public:
   int execute(vector<string> vector, int index) override;
 };

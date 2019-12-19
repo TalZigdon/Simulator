@@ -98,14 +98,13 @@ class Interpreter {
   queue<string> q;
   stack<string> operators;
  public:
-  Expression* interpret(string s);
+  Expression *interpret(string s);
   bool inputIsValid(string s);
   void shuntingYard(string s);
-  Expression* createExp();
+  Expression *createExp();
   void generateVarAndVal(string token);
   void setVariables(string vars1);
   //void addVariable(string name, string val);
 };
-
 
 #endif //EX1__EX1_H_

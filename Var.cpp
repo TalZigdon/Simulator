@@ -6,15 +6,29 @@
 Var::Var(int value1, const string &sim1, bool is_input){
   value = value1;
   sim = sim1;
-  isInput = is_input;
+    bindedFromRightToLeft = is_input;
 }
 int Var::GetValue() const {
   return value;
 }
-bool Var::IsInput() const {
-  return isInput;
-}
+
 const string &Var::GetSim() const {
   return sim;
 
+}
+
+void Var::setValue(int value) {
+    Var::value = value;
+}
+
+void Var::setSim(const string &sim) {
+    Var::sim = sim;
+}
+
+void Var::setBindedFromRightToLeft(bool bindedFromRightToLeft) {
+    Var::bindedFromRightToLeft = bindedFromRightToLeft;
+}
+
+bool Var::isBindedFromRightToLeft() const {
+    return bindedFromRightToLeft;
 }

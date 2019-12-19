@@ -7,9 +7,9 @@
 
 #include "Command.h"
 #include "DefineVarCommand.h"
-class PrintCommand : public Command{
+class PrintCommand : public Command {
  public:
-  DefineVarCommand* vars;
+  DefineVarCommand *vars;
   int execute(vector<string> vector, int index) override;
 
 };

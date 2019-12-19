@@ -9,12 +9,19 @@ using namespace std;
 class Var {
   int value;
   string sim;
-  bool isInput;
+  bool bindedFromRightToLeft;
  public:
   Var(int value, const string &sim, bool is_input);
   const string &GetSim() const;
   int GetValue() const;
-  bool IsInput() const;
+
+    bool isBindedFromRightToLeft() const;
+
+    void setValue(int value);
+
+    void setSim(const string &sim);
+
+    void setBindedFromRightToLeft(bool bindedFromRightToLeft);
 
 };
 

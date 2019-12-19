@@ -36,11 +36,9 @@ UnaryOperator::~UnaryOperator() {
   delete exp;
 }
 
-
 double Value::calculate() {
   return this->val;
 }
-
 
 double Variable::calculate() {
   return this->value;
@@ -124,7 +122,7 @@ UPlus::UPlus(Expression *exp1) : UnaryOperator(exp1) {
 }
 
 double UMinus::calculate() {
-  return -1*this->exp->calculate();
+  return -1 * this->exp->calculate();
 }
 
 UMinus::UMinus(Expression *exp1) : UnaryOperator(exp1) {
@@ -148,43 +146,38 @@ bool Interpreter::inputIsValid(string s) {
 
   // first we replace all vars in string in their value.
   // running on map reversely to check first longer vars (map is alredy sorted).
-  for (auto iter = vars.rbegin(); iter != vars  .rend(); ++iter) {
+  for (auto iter = vars.rbegin(); iter != vars.rend(); ++iter) {
     s = regex_replace(s, regex(iter->first), to_string(iter->second));
   }
 
   // check operator and parenthesis validity
   for (unsigned i = 0; i < s.length(); ++i) {
-    switch(s[i]) {
-      case '(':
-        countParenthesis++;     // count number of opening parentheis
+    switch (s[i]) {
+      case '(':countParenthesis++;     // count number of opening parentheis
         break;
       case ')':
         if (countParenthesis == 0) {    // if there's no opening parenthesis left then string is not valid
           return false;
-        }
-        else {
+        } else {
           countParenthesis--;
         }
         break;
       case '+':
       case '-':
         // check for unary expression validity
-        if (i != 0 && !((s[i-1] == '(') || isdigit(s[i-1]))) {
+        if (i != 0 && !((s[i - 1] == '(') || isdigit(s[i - 1]))) {
           return false;
-        }
-        else if (i == 0 && (s[i+1] == '-' || s[i+1] == '+' || s[i+1] == '*' ||s[i+1] == '/')) {
+        } else if (i == 0 && (s[i + 1] == '-' || s[i + 1] == '+' || s[i + 1] == '*' || s[i + 1] == '/')) {
           return false;
-        }
-        else if (i == s.length()-1) {
+        } else if (i == s.length() - 1) {
           return false;
         }
         break;
       case '*':
       case '/':
-        if (i == 0 || s[i-1] == '+' || s[i-1] == '-' || s[i-1] == '*' || s[i-1] == '/') {
+        if (i == 0 || s[i - 1] == '+' || s[i - 1] == '-' || s[i - 1] == '*' || s[i - 1] == '/') {
           return false;
-        }
-        else if (i == s.length()-1) {
+        } else if (i == s.length() - 1) {
           return false;
         }
         break;
@@ -235,12 +228,11 @@ void Interpreter::shuntingYard(string s) {
       this->q.push(tempDigits);  // pushing the number to the queue
       i += skip;
       skip = 0;
-    }
-    else if (s[i] == '+' || s[i] == '-' || s[i] == '*' || s[i] == '/') {    // if token is operator
+    } else if (s[i] == '+' || s[i] == '-' || s[i] == '*' || s[i] == '/') {    // if token is operator
       // if token is operator that could be unary
       if (s[i] == '+' || s[i] == '-') {
         // if not unary, check for operators with greater or equal precedence in stack
-        if (!(i == 0 || s[i-1] == '(')) {
+        if (!(i == 0 || s[i - 1] == '(')) {
           if (!this->operators.empty()) {
             tempOperator = this->operators.top();
             // every operator is of greater precedence
@@ -272,23 +264,19 @@ void Interpreter::shuntingYard(string s) {
 
       // now push the operator. first check if unary and push the appropriate operator
       if (s[i] == '+' || s[i] == '-') {
-        if (i == 0 || s[i-1] == '(') {
+        if (i == 0 || s[i - 1] == '(') {
           if (s[i] == '-') {
             this->operators.push(string(1, '~'));
-          }
-          else {
+          } else {
             this->operators.push(string(1, '&'));
           }
-        }
-        else {
+        } else {
           this->operators.push(string(1, s[i])); // put the operator in the operators stack
         }
-      }
-      else {
+      } else {
         this->operators.push(string(1, s[i])); // put the operator in the operators stack
       }
-    }
-    else if (s[i] == '(') {   // if token is left parenthesis
+    } else if (s[i] == '(') {   // if token is left parenthesis
       this->operators.push(string(1, s[i])); // put the parenthesis in the queue
     } else if (s[i] == ')') {   // if token is right parenthesis
       //copying the last operator
@@ -315,7 +303,7 @@ void Interpreter::shuntingYard(string s) {
 
 // parse queue into expression
 Expression *Interpreter::createExp() {
-  stack<Expression*> expStack;
+  stack<Expression *> expStack;
   string token;
   Expression *temp1;
   Expression *temp2;
@@ -324,44 +312,37 @@ Expression *Interpreter::createExp() {
     token = this->q.front();
     if (isdigit(token[0])) {        // push numbers
       expStack.push(new Value(stod(token)));
-    }
-    else if (isalpha(token[0]) || token[0] == '_') {      // push variables
+    } else if (isalpha(token[0]) || token[0] == '_') {      // push variables
       expStack.push(new Variable(token, this->vars[token]));
-    }
-    else if (token[0] == '+') {
+    } else if (token[0] == '+') {
       temp1 = expStack.top();
       expStack.pop();
       temp2 = expStack.top();
       expStack.pop();
       expStack.push(new Plus(temp2, temp1));
-    }
-    else if (token[0] == '-') {
+    } else if (token[0] == '-') {
       temp1 = expStack.top();
       expStack.pop();
       temp2 = expStack.top();
       expStack.pop();
       expStack.push(new Minus(temp2, temp1));
-    }
-    else if (token[0] == '/') {
+    } else if (token[0] == '/') {
       temp1 = expStack.top();
       expStack.pop();
       temp2 = expStack.top();
       expStack.pop();
       expStack.push(new Div(temp2, temp1));
-    }
-    else if (token[0] == '*') {
+    } else if (token[0] == '*') {
       temp1 = expStack.top();
       expStack.pop();
       temp2 = expStack.top();
       expStack.pop();
       expStack.push(new Mul(temp2, temp1));
-    }
-    else if (token[0] == '&') {   // uplus
+    } else if (token[0] == '&') {   // uplus
       temp1 = expStack.top();
       expStack.pop();
       expStack.push(new UPlus(temp1));
-    }
-    else if (token[0] == '~') {   // uminus
+    } else if (token[0] == '~') {   // uminus
       temp1 = expStack.top();
       expStack.pop();
       expStack.push(new UMinus(temp1));
@@ -426,14 +407,12 @@ void Interpreter::generateVarAndVal(string token) {
       if (!pointFound && i != 0) {
         pointFound = true;
         continue;
-      }
-      else {
+      } else {
         throw ("value string not valid");
       }
     } else if (val[i] == '-' && i == 0) {
       continue;
-    }
-    else if (!isdigit(val[i])) {
+    } else if (!isdigit(val[i])) {
       throw ("value string not valid");
     }
   }
