@@ -54,7 +54,7 @@ vector<double> splitIntoVectorFirstTime(string buffer) {
   vec1.push_back(stoi(buffer));
   return vec1;
 }
-
+//fuct to read from server
 void readFromServer(int client_socket) {
   bool firstTimeRecievedBufferFromServer = true;
   vector<double> vectorOfValuesFromServer;
@@ -65,7 +65,7 @@ void readFromServer(int client_socket) {
     //std::cout << "Hello message sent\n" << std::endl;
     char buffer[1024] = {0};
     int valread = read(client_socket, buffer, 1024);
-    std::cout << buffer << std::endl;
+    //std::cout << buffer << std::endl;
     if (firstTimeRecievedBufferFromServer) {
       firstTimeRecievedBufferFromServer = false;
       vectorOfValuesFromServer = splitIntoVectorFirstTime(buffer);
