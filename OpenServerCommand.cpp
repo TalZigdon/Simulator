@@ -99,6 +99,7 @@ void readFromServer(int client_socket) {
       else {
         temp = str.substr(0, indexOfFirstEndOfLine);
       }
+
       vectorOfValuesFromServer = splitIntoVector(temp);
       str.erase(0, indexOfFirstEndOfLine);
       Variables::getInstance()->UpdateSymbolsValueFromServer(vectorOfValuesFromServer);
