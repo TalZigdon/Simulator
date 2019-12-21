@@ -2,6 +2,7 @@
 // Created by tal on 10.12.2019.
 //
 
+#include <cstring>
 #include "DefineVarCommand.h"
 int DefineVarCommand::execute(vector<string> vector, int index) {
   string name = vector[index+1];
@@ -9,12 +10,13 @@ int DefineVarCommand::execute(vector<string> vector, int index) {
   if (vector[index+2] == "->")
     bindedToRight= true;
   string simLocation = vector[index + 4];
-
+  //remove the / at the start and the end.
+  simLocation = simLocation.substr(1,simLocation.size() - 2);
   // iterate over map of vars of sim to find the correct var.
   // after var is found, insert var with the var name to program map
   for (std::pair<std::string, Var*> element : Variables::getInstance()->getSimMap()) {
-    if (element.second->GetSim() == simLocation) {
-      Variables::getInstance()->getProgramMap()[name] = element.second;
+    if (strcmp(element.second->GetSim().c_str(), simLocation.c_str()) == 0) {
+      Variables::getInstance()->programMap[name] = element.second;
     }
   }
   //  bool simIsEffectedByVar = false;

@@ -21,8 +21,7 @@ void SendAndGetMassages(int client_socket) {
       }
       Variables::getInstance()->queOfVarsToPushToTheServer.pop();
     }
-    //} else {
-    //  std::cout << "Hello message sent to server" << std::endl;
+    std::chrono::milliseconds(2000);
     mutex_lock1.unlock();
   }
 }

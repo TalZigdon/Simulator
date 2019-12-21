@@ -33,13 +33,6 @@ class Parser {
       commands["Sleep"] = new SleepCommand();
       commands["="] = new EqualCommand();
       commands["while"] = new WhileCommand();
-      /*  //map["var"] = DefineVarCommand();
-        map["print"] = PrintCommand();
-        map["openDataServer"] = OpenServerCommand();
-        map["if"] = IfCommand();
-        map["sleep"] = SleepCommand();
-        map["="] = *(commands["="]);
-        map["while"] = *(commands["while"]);*/
   }
 };
 

@@ -15,13 +15,13 @@
 class Variables {
  private:
   Interpreter *i1;
-  unordered_map<string, Var*> programMap;
   unordered_map<string, Var*> simMap;
   vector<double> symbolsValues;
   mutex mapLock;
   static Variables *instance;
   Variables();
  public:
+  unordered_map<string, Var*> programMap;
   queue<Var*> queOfVarsToPushToTheServer;
   thread thr1;
   thread thr2;

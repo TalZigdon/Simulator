@@ -388,7 +388,8 @@ void Interpreter::generateVarAndVal(string token) {
   // splitting the string by the delimiter
   var = token.substr(0, pos);
   val = token.erase(0, pos + delimiter.length());
-
+  //remove_if(var.begin(),var.end(),' ');
+  //remove_if(val.begin(),val.end(),' ');
   // check var validity
   if (isdigit(var[0]) || var[0] == '_') {
     throw ("variable string not valid");
