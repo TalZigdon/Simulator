@@ -123,7 +123,7 @@ int OpenServerCommand::execute(vector<string> vector, int index) {
 
     close(socketfd); //closing the listening socket
     //thread thread1(readFromServer, client_socket);
-    Variables::getInstance()->thr1 = thread(readFromServer, client_socket);
+    //Variables::getInstance()->thr1 = thread(readFromServer, client_socket);
     //thread1.detach();
     return 2;
   }

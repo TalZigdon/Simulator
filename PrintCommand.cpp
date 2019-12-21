@@ -9,6 +9,6 @@ int PrintCommand::execute(vector<string> vector, int index) {
   if (vector[index + 1].find(ch) != string::npos)
     cout << vector[index + 1] << endl;
   else
-    cout << Variables::getInstance()->doShuntingYard(vector[index + 1]) << endl;
+    cout << Variables::getInstance()->programMap[vector[index+1]]->GetValue() << endl;
   return 2;
 }

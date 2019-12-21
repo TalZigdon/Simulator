@@ -8,20 +8,21 @@
 #include <string>
 std::mutex mutex_lock1;
 void SendAndGetMassages(int client_socket) {
-  string informationWeNeedToSend;
   bool signThatThereIsSomeThingToPush;
+  string information;
   while (true) {
     mutex_lock1.lock();
     while (!Variables::getInstance()->queOfVarsToPushToTheServer.empty()) {
-      string information = Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetSim() +
-          to_string(Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetValue());
-      int is_sent = send(client_socket, information.c_str(), strlen(information.c_str()), 0);
-      if (is_sent == -1) {
+      information ="set " + Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetSim() + " " +
+              to_string(Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetValue()) + "\r\n";
+      int is_sent = send(client_socket, information.c_str(), information.length(),MSG_NOSIGNAL);
+      if (is_sent < 0) {
         std::cout << "Error sending message" << std::endl;
       }
       Variables::getInstance()->queOfVarsToPushToTheServer.pop();
+      information = "";
     }
-    std::chrono::milliseconds(2000);
+    //std::chrono::milliseconds(2000);
     mutex_lock1.unlock();
   }
 }
@@ -38,8 +39,9 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     //We need to create a sockaddr obj to hold address of server
     sockaddr_in address; //in means IP4
     address.sin_family = AF_INET;//IP4
-    address.sin_addr.s_addr = inet_addr("10.0.2.2");  //the localhost address
-    address.sin_port = htons(5402);
+    string localHostAdd = vector[index+1].substr(1,vector[index+1].size()-2);
+    address.sin_addr.s_addr = inet_addr(localHostAdd.c_str());  //the localhost address
+    address.sin_port = htons(stoi(vector[index+2]));
     //we need to convert our number (both port & localhost)
     // to a number that the network understands.
 
@@ -53,19 +55,13 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     }
 
     //if here we made a connection
-    char hello[] = "Hi from client";
-    int is_sent = send(client_socket, hello, strlen(hello), 0);
-    if (is_sent == -1) {
-      std::cout << "Error sending message" << std::endl;
-    } else {
+    //char hello[] = "Hi from client";
+    //int is_sent = send(client_socket, hello, strlen(hello), 0);
+    //if (is_sent == -1) {
+     // std::cout << "Error sending message" << std::endl;
+    //} else {
       Variables::getInstance()->thr2 = thread(SendAndGetMassages, client_socket);
-    }
-
-    char buffer[1024] = {0};
-    int valread = read(client_socket, buffer, 1024);
-    std::cout << buffer << std::endl;
-
-    close(client_socket);
+    //}
     return 3;
   }
 }
