@@ -48,7 +48,7 @@ vector<double> splitIntoVectorFirstTime(string buffer) {
     vec1.push_back(stoi(tokenOfAllText));
   }
 
-  //inserting last token of buffer
+  ///inserting last token of buffer
   endOfLine = buffer.find('\n');
   buffer.erase(endOfLine, 1);
   vec1.push_back(stoi(buffer));
