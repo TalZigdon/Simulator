@@ -104,7 +104,6 @@ void readFromServer(int client_socket) {
       indexOfFirstEndOfLine = str.find_first_of('\n');
     }
     remainingChunk = str;
-
     mutex_lock.unlock();
   }
 }
