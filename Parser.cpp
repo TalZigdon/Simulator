@@ -55,7 +55,7 @@ Parser::Parser(vector<string> array) {
         index += c->execute(array, index);
       }
     }
-    cout << "after first execute" << index << endl;
+    //cout << "after index" << index << endl;
   }
 }
 unordered_map<string, Command *> Parser::getMap() {

@@ -59,7 +59,7 @@ vector<double> splitIntoVector(string buffer) {
   return vec1;
 }
 
-string copyToString(string remainingChunk, char* buffer, size_t numberOfCharsToCopy) {
+string copyToString(string remainingChunk, char *buffer, size_t numberOfCharsToCopy) {
   string str = "";
   for (int i = 0; i < numberOfCharsToCopy; ++i) {
     str += buffer[i];
@@ -94,12 +94,11 @@ void readFromServer(int client_socket) {
       if (firstIteration) {
         firstIteration = false;
         temp = remainingChunk + str.substr(0, indexOfFirstEndOfLine);
-      }
-      else {
+      } else {
         temp = str.substr(0, indexOfFirstEndOfLine);
       }
       vectorOfValuesFromServer = splitIntoVector(temp);
-      str.erase(0, indexOfFirstEndOfLine+1);
+      str.erase(0, indexOfFirstEndOfLine + 1);
       Variables::getInstance()->UpdateSymbolsValueFromServer(vectorOfValuesFromServer);
       indexOfFirstEndOfLine = str.find_first_of('\n');
     }
@@ -155,7 +154,7 @@ int OpenServerCommand::execute(vector<string> vector, int index) {
 
     close(socketfd); //closing the listening socket
     //thread thread1(readFromServer, client_socket);
-    //Variables::getInstance()->thr1 = thread(readFromServer, client_socket);
+    Variables::getInstance()->thr1 = thread(readFromServer, client_socket);
     //thread1.detach();
     return 2;
   }
