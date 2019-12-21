@@ -7,10 +7,10 @@
 int WhileCommand::execute(vector<string> vector1, int index) {
   vector<string> tempStringToParsInWhile;
   Command *c;
-  int saveTheNumberOfTheLastIndexInWhile = index + 2;
+  int saveTheNumberOfTheLastIndexInWhile = index + 3;
   while (vector1[saveTheNumberOfTheLastIndexInWhile] != "}") {
-    saveTheNumberOfTheLastIndexInWhile++;
     tempStringToParsInWhile.push_back(vector1[saveTheNumberOfTheLastIndexInWhile]);
+    saveTheNumberOfTheLastIndexInWhile++;
   }
   flag = IsConditionIsTrue(vector1[index + 1]);
   while (flag) {
