@@ -17,7 +17,7 @@ class Var {
 
   bool isBindedFromRightToLeft() const;
 
-  void setValue(int value);
+  void setValue(double value);
 
   void setSim(const string &sim);
 
