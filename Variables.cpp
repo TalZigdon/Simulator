@@ -217,3 +217,10 @@ void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
 //    symbolsValues[i] = vec[i];
 //  }
 }
+bool Variables::UpdateValueOfProgramVar(string str, double newVal) {
+  if(programMap.count(str)){
+    programMap[str]->setValue(newVal);
+    return true;
+  }
+  return false;
+}

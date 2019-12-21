@@ -19,7 +19,7 @@ const string &Var::GetSim() const {
 
 }
 
-void Var::setValue(int value) {
+void Var::setValue(double value) {
     Var::value = value;
 }
 //

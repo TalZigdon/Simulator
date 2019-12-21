@@ -5,18 +5,24 @@
 #include <cstring>
 #include <mutex>
 #include "ConnectControlClientCommand.h"
+#include <string>
 std::mutex mutex_lock1;
 void SendAndGetMassages(int client_socket) {
+  string informationWeNeedToSend;
+  bool signThatThereIsSomeThingToPush;
   while (true) {
     mutex_lock1.lock();
-    //int is_sent = send(client_socket, hello, strlen(hello), 0);
-    //if (is_sent == -1) {
-    //  std::cout << "Error sending message" << std::endl;
+    while (!Variables::getInstance()->queOfVarsToPushToTheServer.empty()) {
+      string information = Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetSim() +
+          to_string(Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetValue());
+      int is_sent = send(client_socket, information.c_str(), strlen(information.c_str()), 0);
+      if (is_sent == -1) {
+        std::cout << "Error sending message" << std::endl;
+      }
+      Variables::getInstance()->queOfVarsToPushToTheServer.pop();
+    }
     //} else {
     //  std::cout << "Hello message sent to server" << std::endl;
-    char buffer[1024] = {0};
-    int valread = read(client_socket, buffer, 1024);
-    std::cout << buffer << std::endl;
     mutex_lock1.unlock();
   }
 }
@@ -26,7 +32,7 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     int client_socket = socket(AF_INET, SOCK_STREAM, 0);
     if (client_socket == -1) {
       //error
-      std::cerr << "Could not create a socket"<<std::endl;
+      std::cerr << "Could not create a socket" << std::endl;
       return -1;
     }
 
@@ -39,26 +45,26 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     // to a number that the network understands.
 
     // Requesting a connection with the server on local host with port 8081
-    int is_connect = connect(client_socket, (struct sockaddr *)&address, sizeof(address));
+    int is_connect = connect(client_socket, (struct sockaddr *) &address, sizeof(address));
     if (is_connect == -1) {
-      std::cerr << "Could not connect to host server"<<std::endl;
+      std::cerr << "Could not connect to host server" << std::endl;
       return -2;
     } else {
-      std::cout<<"Client is now connected to server" <<std::endl;
+      std::cout << "Client is now connected to server" << std::endl;
     }
 
     //if here we made a connection
     char hello[] = "Hi from client";
-    int is_sent = send(client_socket , hello , strlen(hello) , 0 );
+    int is_sent = send(client_socket, hello, strlen(hello), 0);
     if (is_sent == -1) {
-      std::cout<<"Error sending message"<<std::endl;
+      std::cout << "Error sending message" << std::endl;
     } else {
       Variables::getInstance()->thr2 = thread(SendAndGetMassages, client_socket);
     }
 
     char buffer[1024] = {0};
-    int valread = read( client_socket , buffer, 1024);
-    std::cout<<buffer<<std::endl;
+    int valread = read(client_socket, buffer, 1024);
+    std::cout << buffer << std::endl;
 
     close(client_socket);
     return 3;

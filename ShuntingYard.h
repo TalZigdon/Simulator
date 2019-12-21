@@ -95,6 +95,7 @@ class UMinus : public UnaryOperator {
 
 class Interpreter {
   map<string, double> vars;
+ private:
   queue<string> q;
   stack<string> operators;
  public:
@@ -105,6 +106,7 @@ class Interpreter {
   void generateVarAndVal(string token);
   void setVariables(string vars1);
   //void addVariable(string name, string val);
+  map<string,double> GetVars();
 };
 
 #endif //EX1__EX1_H_

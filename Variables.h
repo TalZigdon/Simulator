@@ -19,15 +19,20 @@ class Variables {
   unordered_map<string, Var*> simMap;
   vector<double> symbolsValues;
   mutex mapLock;
-  queue<Var*> queOfVarsToPushToTheServer;
   static Variables *instance;
   Variables();
  public:
+  queue<Var*> queOfVarsToPushToTheServer;
   thread thr1;
   thread thr2;
   //check if the object is already exists, if not,make a new one, else return the last one.
   double doShuntingYard(string str);
   void addVarToMap(string str);
+  bool UpdateValueOfProgramVar(string str, double newVal);
+  void UpdateSymbolsValueFromServer(vector<double> vec);
+
+  void InitializeSymbols();
+
   static Variables *getInstance() {
     if (!instance)
       instance = new Variables();
@@ -36,10 +41,6 @@ class Variables {
   void InsertToQueOfVarsToPushToTheServer(Var* var){
     queOfVarsToPushToTheServer.push(var);
   }
-  void UpdateSymbolsValueFromServer(vector<double> vec);
-
-  void InitializeSymbols();
-
   void setVar(string v, Var* var) {
     programMap[v] = var;
   }

@@ -9,6 +9,7 @@
 #include <cstring>
 #include "regex"
 #include "Var.h"
+#include "Variables.h"
 using namespace std;
 
 Value::Value(const double va) : val(va) {}
@@ -420,5 +421,12 @@ void Interpreter::generateVarAndVal(string token) {
   if (this->vars.count(var)) {
     this->vars.erase(var);
   }
+  //add the new var to the map!
   this->vars.insert(pair<string, double>(var, stod(val)));
+    if(Variables::getInstance()->UpdateValueOfProgramVar(var,Variables::getInstance()->doShuntingYard(val))){
+      Variables::getInstance()->InsertToQueOfVarsToPushToTheServer(Variables::getInstance()->getProgramMap()[var]);
+  }
+}
+map<string, double> Interpreter::GetVars() {
+  return vars;
 }
