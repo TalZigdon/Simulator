@@ -56,7 +56,6 @@ vector<double> splitIntoVector(string buffer) {
     buffer.erase(0, posOfAllText + delimiterOfAllText.length());
     vec1.push_back(stoi(tokenOfAllText));
   }
-
   return vec1;
 }
 
@@ -99,7 +98,6 @@ void readFromServer(int client_socket) {
       else {
         temp = str.substr(0, indexOfFirstEndOfLine);
       }
-
       vectorOfValuesFromServer = splitIntoVector(temp);
       str.erase(0, indexOfFirstEndOfLine);
       Variables::getInstance()->UpdateSymbolsValueFromServer(vectorOfValuesFromServer);
