@@ -111,9 +111,11 @@ Lexer::Lexer(string fileName) {
     i = 0;
   }
 
+  /*
   for (i = 0; i < vec.size(); i++) {
     cout << vec[i] << endl;
   }
+   */
 
   this->array = vec;
 }

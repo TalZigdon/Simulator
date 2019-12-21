@@ -135,80 +135,118 @@ void Variables::InitializeSymbols() {
 }
 // a function that update the symbols value from the server!
 void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
+  vector<double> vec1;
+
   // lock map
   mapLock.lock();
 
-  simMap["airspeed-indicator_indicated-speed-kt"]->setValue(vec[0]);
+  if (!simMap["airspeed-indicator_indicated-speed-kt"]->isBindedFromRightToLeft())
+    simMap["airspeed-indicator_indicated-speed-kt"]->setValue(vec[0]);
 
-  simMap["time_warp"]->setValue((vec[1]));
+  if (!simMap["time_warp"]->isBindedFromRightToLeft())
+    simMap["time_warp"]->setValue((vec[1]));
 
-  simMap["switches_magnetos"]->setValue(vec[2]);
+  if (!simMap["switches_magnetos"]->isBindedFromRightToLeft())
+    simMap["switches_magnetos"]->setValue(vec[2]);
 
-  simMap["heading-indicator_offset-deg"]->setValue(vec[3]);
+  if (!simMap["heading-indicator_offset-deg"]->isBindedFromRightToLeft())
+    simMap["heading-indicator_offset-deg"]->setValue(vec[3]);
 
-  simMap["altimeter_indicated-altitude-ft"]->setValue(vec[4]);
+  if (!simMap["altimeter_indicated-altitude-ft"]->isBindedFromRightToLeft())
+    simMap["altimeter_indicated-altitude-ft"]->setValue(vec[4]);
 
-  simMap["altimeter_pressure-alt-ft"]->setValue(vec[5]);
+  if (!simMap["altimeter_pressure-alt-ft"]->isBindedFromRightToLeft())
+    simMap["altimeter_pressure-alt-ft"]->setValue(vec[5]);
 
-  simMap["attitude-indicator_indicated-pitch-deg"]->setValue(vec[6]);
+  if (!simMap["attitude-indicator_indicated-pitch-deg"]->isBindedFromRightToLeft())
+    simMap["attitude-indicator_indicated-pitch-deg"]->setValue(vec[6]);
 
-  simMap["attitude-indicator_indicated-roll-deg"]->setValue(vec[7]);
+  if (!simMap["attitude-indicator_indicated-roll-deg"]->isBindedFromRightToLeft())
+    simMap["attitude-indicator_indicated-roll-deg"]->setValue(vec[7]);
 
-  simMap["attitude-indicator_internal-pitch-deg"]->setValue(vec[8]);
+  if (!simMap["attitude-indicator_internal-pitch-deg"]->isBindedFromRightToLeft())
+    simMap["attitude-indicator_internal-pitch-deg"]->setValue(vec[8]);
 
-  simMap["attitude-indicator_internal-roll-deg"]->setValue(vec[9]);
+  if (!simMap["attitude-indicator_internal-roll-deg"]->isBindedFromRightToLeft())
+    simMap["attitude-indicator_internal-roll-deg"]->setValue(vec[9]);
 
-  simMap["encoder_indicated-altitude-ft"]->setValue(vec[10]);
+  if (!simMap["encoder_indicated-altitude-ft"]->isBindedFromRightToLeft())
+    simMap["encoder_indicated-altitude-ft"]->setValue(vec[10]);
 
-  simMap["encoder_pressure-alt-ft"]->setValue(vec[11]);
+  if (!simMap["encoder_pressure-alt-ft"]->isBindedFromRightToLeft())
+    simMap["encoder_pressure-alt-ft"]->setValue(vec[11]);
 
-  simMap["gps_indicated-altitude-ft"]->setValue(vec[12]);
+  if (!simMap["gps_indicated-altitude-ft"]->isBindedFromRightToLeft())
+    simMap["gps_indicated-altitude-ft"]->setValue(vec[12]);
 
-  simMap["gps_indicated-ground-speed-kt"]->setValue(vec[13]);
+  if (!simMap["gps_indicated-ground-speed-kt"]->isBindedFromRightToLeft())
+    simMap["gps_indicated-ground-speed-kt"]->setValue(vec[13]);
 
-  simMap["gps_indicated-vertical-speed"]->setValue(vec[14]);
+  if (!simMap["gps_indicated-vertical-speed"]->isBindedFromRightToLeft())
+    simMap["gps_indicated-vertical-speed"]->setValue(vec[14]);
 
-  simMap["indicated-heading-deg"]->setValue(vec[15]);
+  if (!simMap["indicated-heading-deg"]->isBindedFromRightToLeft())
+    simMap["indicated-heading-deg"]->setValue(vec[15]);
 
-  simMap["magnetic-compass_indicated-heading-deg"]->setValue(vec[16]);
+  if (!simMap["magnetic-compass_indicated-heading-deg"]->isBindedFromRightToLeft())
+    simMap["magnetic-compass_indicated-heading-deg"]->setValue(vec[16]);
 
-  simMap["slip-skid-ball_indicated-slip-skid"]->setValue(vec[17]);
+  if (!simMap["slip-skid-ball_indicated-slip-skid"]->isBindedFromRightToLeft())
+    simMap["slip-skid-ball_indicated-slip-skid"]->setValue(vec[17]);
 
-  simMap["turn-indicator_indicated-turn-rate"]->setValue(vec[18]);
+  if (!simMap["turn-indicator_indicated-turn-rate"]->isBindedFromRightToLeft())
+    simMap["turn-indicator_indicated-turn-rate"]->setValue(vec[18]);
 
-  simMap["vertical-speed-indicator_indicated-speed-fpm"]->setValue(vec[19]);
+  if (!simMap["vertical-speed-indicator_indicated-speed-fpm"]->isBindedFromRightToLeft())
+    simMap["vertical-speed-indicator_indicated-speed-fpm"]->setValue(vec[19]);
 
-  simMap["flight_aileron"]->setValue(vec[20]);
+  if (!simMap["flight_aileron"]->isBindedFromRightToLeft())
+    simMap["flight_aileron"]->setValue(vec[20]);
 
-  simMap["flight_elevator"]->setValue(vec[21]);
+  if (!simMap["flight_elevator"]->isBindedFromRightToLeft())
+    simMap["flight_elevator"]->setValue(vec[21]);
 
-  simMap["flight_rudder"]->setValue(vec[22]);
+  if (!simMap["flight_rudder"]->isBindedFromRightToLeft())
+    simMap["flight_rudder"]->setValue(vec[22]);
 
-  simMap["flight_flaps"]->setValue(vec[23]);
+  if (!simMap["flight_flaps"]->isBindedFromRightToLeft())
+    simMap["flight_flaps"]->setValue(vec[23]);
 
-  simMap["engine_throttle"]->setValue(vec[24]);
+  if (!simMap["engine_throttle"]->isBindedFromRightToLeft())
+    simMap["engine_throttle"]->setValue(vec[24]);
 
-  simMap["current-engine_throttle"]->setValue(vec[25]);
+  if (!simMap["current-engine_throttle"]->isBindedFromRightToLeft())
+    simMap["current-engine_throttle"]->setValue(vec[25]);
 
-  simMap["switches_master-avionics"]->setValue(vec[26]);
+  if (!simMap["switches_master-avionics"]->isBindedFromRightToLeft())
+    simMap["switches_master-avionics"]->setValue(vec[26]);
 
-  simMap["switches_starter"]->setValue(vec[27]);
+  if (!simMap["switches_starter"]->isBindedFromRightToLeft())
+    simMap["switches_starter"]->setValue(vec[27]);
 
-  simMap["active-engine_auto-start"]->setValue(vec[28]);
+  if (!simMap["active-engine_auto-start"]->isBindedFromRightToLeft())
+    simMap["active-engine_auto-start"]->setValue(vec[28]);
 
-  simMap["flight_speedbrake"]->setValue(vec[29]);
+  if (!simMap["flight_speedbrake"]->isBindedFromRightToLeft())
+    simMap["flight_speedbrake"]->setValue(vec[29]);
 
-  simMap["c172p_brake-parking"]->setValue(vec[30]);
+  if (!simMap["c172p_brake-parking"]->isBindedFromRightToLeft())
+    simMap["c172p_brake-parking"]->setValue(vec[30]);
 
-  simMap["engine_primer"]->setValue(vec[31]);
+  if (!simMap["engine_primer"]->isBindedFromRightToLeft())
+    simMap["engine_primer"]->setValue(vec[31]);
 
-  simMap["current-engine_mixture"]->setValue(vec[32]);
+  if (!simMap["current-engine_mixture"]->isBindedFromRightToLeft())
+    simMap["current-engine_mixture"]->setValue(vec[32]);
 
-  simMap["switches_master-bat"]->setValue(vec[33]);
+  if (!simMap["switches_master-bat"]->isBindedFromRightToLeft())
+    simMap["switches_master-bat"]->setValue(vec[33]);
 
-  simMap["switches_master-alt"]->setValue(vec[34]);
+  if (!simMap["switches_master-alt"]->isBindedFromRightToLeft())
+    simMap["switches_master-alt"]->setValue(vec[34]);
 
-  simMap["engine_rpm"]->setValue(vec[35]);
+  if (!simMap["engine_rpm"]->isBindedFromRightToLeft())
+    simMap["engine_rpm"]->setValue(vec[35]);
 
   // unlock map
   mapLock.unlock();

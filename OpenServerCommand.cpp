@@ -99,7 +99,7 @@ void readFromServer(int client_socket) {
         temp = str.substr(0, indexOfFirstEndOfLine);
       }
       vectorOfValuesFromServer = splitIntoVector(temp);
-      str.erase(0, indexOfFirstEndOfLine);
+      str.erase(0, indexOfFirstEndOfLine+1);
       Variables::getInstance()->UpdateSymbolsValueFromServer(vectorOfValuesFromServer);
       indexOfFirstEndOfLine = str.find_first_of('\n');
     }
