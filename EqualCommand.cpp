@@ -5,7 +5,8 @@
 #include "EqualCommand.h"
 int EqualCommand::execute(vector<string> vector, int index) {
     //insert to the map of the interpreter.
-  //Variables::getInstance()->addVarToMap(vector[index]);
+  Variables::getInstance()->addVarToMap(vector[index]);
+
   return 1;
 }
 

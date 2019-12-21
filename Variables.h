@@ -10,6 +10,7 @@
 #include "Var.h"
 #include "ShuntingYard.h"
 #include "thread"
+#include <queue>
 // a singleton class
 class Variables {
  private:
@@ -18,6 +19,7 @@ class Variables {
   unordered_map<string, Var*> simMap;
   vector<double> symbolsValues;
   mutex mapLock;
+  queue<Var*> queOfVarsToPushToTheServer;
   static Variables *instance;
   Variables();
  public:
@@ -31,7 +33,9 @@ class Variables {
       instance = new Variables();
     return instance;
   }
-
+  void InsertToQueOfVarsToPushToTheServer(Var* var){
+    queOfVarsToPushToTheServer.push(var);
+  }
   void UpdateSymbolsValueFromServer(vector<double> vec);
 
   void InitializeSymbols();

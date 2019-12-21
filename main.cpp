@@ -12,6 +12,7 @@ int main(int argc, char **argv) {
   Lexer lex = Lexer(argv[1]);
   Parser *parser1 = new Parser(lex.array);
   Variables::getInstance()->thr1.join();
+  Variables::getInstance()->thr2.join();
   return 0;
 }
 
