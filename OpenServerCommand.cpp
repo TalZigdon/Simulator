@@ -7,12 +7,42 @@
 #include "OpenServerCommand.h"
 
 std::mutex mutex_lock;
+
+//vector<double> splitIntoVectorFirstTime(string buffer) {
+//  vector<double> vec1;
+//
+//  auto index = buffer.find_first_of('\n');
+//  string delimiterOfAllText = ",";
+//  size_t posOfAllText = 0;
+//  string tokenOfAllText;
+//  size_t endOfLine;
+//
+//  while ((posOfAllText = buffer.find(delimiterOfAllText)) != string::npos) {
+//    tokenOfAllText = buffer.substr(0, posOfAllText);
+//    buffer.erase(0, posOfAllText + delimiterOfAllText.length());
+//    vec1.push_back(stoi(tokenOfAllText));
+//  }
+//
+//  ///inserting last token of buffer
+//  endOfLine = buffer.find('\n');
+//  if (endOfLine != string :: npos)
+//    buffer.erase(endOfLine, 1);
+//  if(buffer != "")
+//    vec1.push_back(stoi(buffer));
+//  return vec1;
+//}
+
 vector<double> splitIntoVector(string buffer) {
-  auto index1 = buffer.find_first_of('\n');
-  auto index2 = buffer.find_first_of('\n', index1 + 1);
-  //auto x = buffer.length();
-  buffer.erase(index2+1, buffer.length()-index2);
-  buffer.erase(0, index1);
+//  auto index1 = buffer.find_first_of('\n');
+//  auto index2 = buffer.find_first_of('\n', index1 + 1);
+//
+//  // if there is enough data before the first \n, insert it.
+//  if (index2 == string::npos && index1 >= 325)
+//    return splitIntoVectorFirstTime(buffer);
+//
+//  //auto x = buffer.length();
+//  buffer.erase(index2+1, buffer.length()-index2);
+//  buffer.erase(0, index1);
 
   vector<double> vec1;
 
@@ -27,52 +57,55 @@ vector<double> splitIntoVector(string buffer) {
     vec1.push_back(stoi(tokenOfAllText));
   }
 
-  //inserting last token of buffer
-  endOfLine = buffer.find('\n');
-  buffer.erase(endOfLine, 1);
-  vec1.push_back(stoi(buffer));
   return vec1;
 }
 
-vector<double> splitIntoVectorFirstTime(string buffer) {
-  vector<double> vec1;
-
-  string delimiterOfAllText = ",";
-  size_t posOfAllText = 0;
-  string tokenOfAllText;
-  size_t endOfLine;
-
-  while ((posOfAllText = buffer.find(delimiterOfAllText)) != string::npos) {
-    tokenOfAllText = buffer.substr(0, posOfAllText);
-    buffer.erase(0, posOfAllText + delimiterOfAllText.length());
-    vec1.push_back(stoi(tokenOfAllText));
+string copyToString(string remainingChunk, char* buffer, size_t numberOfCharsToCopy) {
+  string str = "";
+  for (int i = 0; i < numberOfCharsToCopy; ++i) {
+    str += buffer[i];
   }
-
-  ///inserting last token of buffer
-  endOfLine = buffer.find('\n');
-  buffer.erase(endOfLine, 1);
-  vec1.push_back(stoi(buffer));
-  return vec1;
+  return str;
 }
+
 //fuct to read from server
 void readFromServer(int client_socket) {
   bool firstTimeRecievedBufferFromServer = true;
   vector<double> vectorOfValuesFromServer;
+  string remainingChunk = "";
+  string temp = "";
+  size_t indexOfFirstEndOfLine;
   while (true) {
     mutex_lock.lock();
-    //char *hello = "Hello, I can hear you! \n";
-    //send(client_socket, hello, strlen(hello), 0);
-    //std::cout << "Hello message sent\n" << std::endl;
+    bool firstIteration = true;
     char buffer[1024] = {0};
     int valread = read(client_socket, buffer, 1024);
-    //std::cout << buffer << std::endl;
+    string str(buffer);
+    /*
     if (firstTimeRecievedBufferFromServer) {
       firstTimeRecievedBufferFromServer = false;
       vectorOfValuesFromServer = splitIntoVectorFirstTime(buffer);
     } else {
       vectorOfValuesFromServer = splitIntoVector(buffer);
     }
-    Variables::getInstance()->UpdateSymbolsValueFromServer(vectorOfValuesFromServer);
+     */
+
+    indexOfFirstEndOfLine = str.find_first_of('\n');
+    while (indexOfFirstEndOfLine != string::npos) {
+      if (firstIteration) {
+        firstIteration = false;
+        temp = remainingChunk + str.substr(0, indexOfFirstEndOfLine);
+      }
+      else {
+        temp = str.substr(0, indexOfFirstEndOfLine);
+      }
+      vectorOfValuesFromServer = splitIntoVector(temp);
+      str.erase(0, indexOfFirstEndOfLine);
+      Variables::getInstance()->UpdateSymbolsValueFromServer(vectorOfValuesFromServer);
+      indexOfFirstEndOfLine = str.find_first_of('\n');
+    }
+    remainingChunk = str;
+
     mutex_lock.unlock();
   }
 }
