@@ -7,6 +7,9 @@
 int DefineVarCommand::execute(vector<string> vector, int index) {
   string name = vector[index+1];
   bool bindedToRight = false;
+  if(vector[index + 1].find("=") != string::npos){
+    return 1;
+  }
   if (vector[index+2] == "->")
     bindedToRight= true;
   string simLocation = vector[index + 4];
