@@ -2,6 +2,7 @@
 // Created by tal on 12.12.2019.
 //
 
+#include <cstring>
 #include "Variables.h"
 Variables *Variables::instance = 0;
 
@@ -140,9 +141,9 @@ void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
   // lock map
   mapLock.lock();
 
-  if (!simMap["airspeed-indicator_indicated-speed-kt"]->isBindedFromRightToLeft())
+  if (!simMap["airspeed-indicator_indicated-speed-kt"]->isBindedFromRightToLeft()) {
     simMap["airspeed-indicator_indicated-speed-kt"]->setValue(vec[0]);
-
+  }
   if (!simMap["time_warp"]->isBindedFromRightToLeft())
     simMap["time_warp"]->setValue((vec[1]));
 

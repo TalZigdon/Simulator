@@ -39,7 +39,9 @@ class Variables {
     return instance;
   }
   void InsertToQueOfVarsToPushToTheServer(Var* var){
+    mapLock.lock();
     queOfVarsToPushToTheServer.push(var);
+    mapLock.unlock();
   }
   void setVar(string v, Var* var) {
     programMap[v] = var;

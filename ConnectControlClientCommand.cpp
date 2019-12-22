@@ -13,16 +13,15 @@ void SendAndGetMassages(int client_socket) {
   while (true) {
     mutex_lock1.lock();
     while (!Variables::getInstance()->queOfVarsToPushToTheServer.empty()) {
-      information ="set " + Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetSim() + " " +
-              to_string(Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetValue()) + "\r\n";
-      int is_sent = send(client_socket, information.c_str(), information.length(),MSG_NOSIGNAL);
+      information = "set " + Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetSim().substr(1) + " " +
+          to_string(Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetValue()) + "\r\n";
+      int is_sent = send(client_socket, information.c_str(), information.length(), MSG_NOSIGNAL);
       if (is_sent < 0) {
         std::cout << "Error sending message" << std::endl;
       }
       Variables::getInstance()->queOfVarsToPushToTheServer.pop();
       information = "";
     }
-    //std::chrono::milliseconds(2000);
     mutex_lock1.unlock();
   }
 }
@@ -39,9 +38,9 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     //We need to create a sockaddr obj to hold address of server
     sockaddr_in address; //in means IP4
     address.sin_family = AF_INET;//IP4
-    string localHostAdd = vector[index+1].substr(1,vector[index+1].size()-2);
+    string localHostAdd = vector[index + 1].substr(1, vector[index + 1].size() - 2);
     address.sin_addr.s_addr = inet_addr(localHostAdd.c_str());  //the localhost address
-    address.sin_port = htons(stoi(vector[index+2]));
+    address.sin_port = htons(stoi(vector[index + 2]));
     //we need to convert our number (both port & localhost)
     // to a number that the network understands.
 
@@ -58,9 +57,9 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     //char hello[] = "Hi from client";
     //int is_sent = send(client_socket, hello, strlen(hello), 0);
     //if (is_sent == -1) {
-     // std::cout << "Error sending message" << std::endl;
+    // std::cout << "Error sending message" << std::endl;
     //} else {
-      Variables::getInstance()->thr2 = thread(SendAndGetMassages, client_socket);
+    Variables::getInstance()->thr2 = thread(SendAndGetMassages, client_socket);
     //}
     return 3;
   }
