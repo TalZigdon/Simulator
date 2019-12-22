@@ -258,7 +258,10 @@ void Interpreter::shuntingYard(string s) {
           while (tempOperator[0] == '~' || tempOperator[0] == '&') {
             this->q.push(tempOperator);
             this->operators.pop();
-            tempOperator = this->operators.top();
+            if (!this->operators.empty())
+              tempOperator = this->operators.top();
+            else
+              tempOperator = "";
           }
         }
       }
