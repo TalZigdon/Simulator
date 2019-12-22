@@ -46,6 +46,8 @@ Parser::Parser(vector<string> array) {
     //  if(Variables::getInstance()->getMap().count(array[index]) > 0) {
     //    Variables::getInstance().
     // }
+//    if (array[index] == "autostart = 1")
+//      int x = 0;
     if (array[index].find("=") != string::npos) {
       c = commands["="];
       index += c->execute(array, index);

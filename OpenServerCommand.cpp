@@ -56,6 +56,11 @@ vector<double> splitIntoVector(string buffer) {
     buffer.erase(0, posOfAllText + delimiterOfAllText.length());
     vec1.push_back(stoi(tokenOfAllText));
   }
+  auto posOfEndOfLine = buffer.find_first_of('\n');
+  if (posOfEndOfLine != string::npos)
+    buffer.erase(posOfEndOfLine, 1);
+  if (buffer != "")
+    vec1.push_back(stoi(buffer));
   return vec1;
 }
 
