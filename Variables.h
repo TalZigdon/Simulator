@@ -14,13 +14,13 @@
 // a singleton class
 class Variables {
  private:
-  Interpreter *i1;
   unordered_map<string, Var*> simMap;
   vector<double> symbolsValues;
   mutex mapLock;
   static Variables *instance;
   Variables();
  public:
+  Interpreter *i1;
   unordered_map<string,string> fromPathToVar;
   unordered_map<string, Var*> programMap;
   queue<Var*> queOfVarsToPushToTheServer;
