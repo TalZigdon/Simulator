@@ -237,6 +237,7 @@ void Interpreter::shuntingYard(string s) {
           if (!this->operators.empty()) {
             tempOperator = this->operators.top();
             // every operator is of greater precedence
+            //
             while (tempOperator[0] != '(') {
               this->q.push(tempOperator);
               this->operators.pop();
