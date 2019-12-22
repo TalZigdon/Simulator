@@ -63,4 +63,10 @@ Parser::Parser(vector<string> array) {
 unordered_map<string, Command *> Parser::getMap() {
   return this->commands;
 }
+Parser::~Parser() {
+  for(pair<string,Command*> element: commands){
+    delete element.second;
+  }
+
+}
 

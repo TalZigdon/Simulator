@@ -47,7 +47,7 @@ class Variables {
     queOfVarsToPushToTheServer.push(temp);
     mapLock.unlock();
   }
-  void setVar(string v, Var* var) {
+  void setVar(string const v, Var* var) {
     programMap[v] = var;
   }
 
@@ -59,12 +59,24 @@ class Variables {
     return simMap;
   }
 
-  Var *getVar(string v) {
+  Var *getVar(string const v) {
     return programMap[v];
   }
 
  protected:
-  virtual ~Variables() {};
+  virtual ~Variables() {
+    for(pair<string,Var*> element: programMap){
+      delete (element.second);
+    }
+    for(pair<string,Var*> element: simMap){
+      delete (element.second);
+    }
+    while(!queOfVarsToPushToTheServer.empty()){
+      delete queOfVarsToPushToTheServer.front();
+      queOfVarsToPushToTheServer.pop();
+    }
+    delete(i1);
+  };
 };
 
 

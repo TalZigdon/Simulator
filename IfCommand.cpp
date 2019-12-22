@@ -9,7 +9,7 @@ int IfCommand::execute(vector<string> vector, int index) {
   flag = IsConditionIsTrue(vector[index + 1]);
   int count = index;
   if (flag) {
-    return command.execute(vector, index) + 2;
+    return command.execute(vector, index + 2) + 2;
   }
   ////there is a problem here, we need to jump over all the indexes in the if.
   while(vector[count] != "}"){
