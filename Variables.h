@@ -43,8 +43,8 @@ class Variables {
     mapLock.lock();
     string str = var->GetSim();
     double val = var ->GetValue();
-    Var* temp = new Var()
-    queOfVarsToPushToTheServer.push(var);
+    Var* temp = new Var(val,str,false);
+    queOfVarsToPushToTheServer.push(temp);
     mapLock.unlock();
   }
   void setVar(string v, Var* var) {
