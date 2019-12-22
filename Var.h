@@ -9,7 +9,7 @@ using namespace std;
 class Var {
   double value;
   string simPath;
-  bool bindedFromRightToLeft;
+  bool bindedFromLeftToRight;
  public:
   Var(double value, const string &sim, bool is_input);
   const string &GetSim() const;
@@ -21,7 +21,7 @@ class Var {
 
   void setSim(const string &sim);
 
-  void setBindedFromRightToLeft(bool bindedFromRightToLeft);
+  void setBindedFromLeftToRight(bool bindedFromRightToLeft);
 
 };
 

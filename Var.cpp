@@ -7,7 +7,7 @@
 Var::Var(double value1, const string &sim1, bool is_input) {
     value = value1;
     simPath = sim1;
-    bindedFromRightToLeft = is_input;
+  bindedFromLeftToRight = is_input;
     Variables::getInstance();
 }
 double Var::GetValue() const {
@@ -27,10 +27,10 @@ void Var::setSim(const string &sim) {
     Var::simPath = sim;
 }
 
-void Var::setBindedFromRightToLeft(bool bindedFromRightToLeft) {
-    Var::bindedFromRightToLeft = bindedFromRightToLeft;
+void Var::setBindedFromLeftToRight(bool bindedFromLeftToRight) {
+    Var::bindedFromLeftToRight = bindedFromLeftToRight;
 }
 
 bool Var::isBindedFromRightToLeft() const {
-    return bindedFromRightToLeft;
+    return bindedFromLeftToRight;
 }

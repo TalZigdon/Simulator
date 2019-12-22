@@ -21,6 +21,7 @@ int DefineVarCommand::execute(vector<string> vector, int index) {
     if (strcmp(element.second->GetSim().c_str(), simLocation.c_str()) == 0) {
       Variables::getInstance()->programMap[name] = element.second;
       Variables::getInstance()->fromPathToVar[simLocation] = name;
+      Variables::getInstance()->programMap[name]->setBindedFromLeftToRight(bindedToRight);
     }
   }
   //  bool simIsEffectedByVar = false;
