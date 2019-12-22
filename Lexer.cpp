@@ -23,7 +23,7 @@ Lexer::Lexer(string fileName) {
     getline(file, line);
     //insert a string and split the strings by ' ', '(', ')', ','
     while (i < line.size()) {
-      // if the sign is "equal", we reaced a mathematical ass
+      // if the sign is "equal", we reached a mathematical ass
       while (i < line.size() && line[i] != '(' && line[i] != ')' && line[i] != ',') {
 //        // if reached an assignment - split to var andd value
 //        if (line[i] == '=' && !(line[i-1] == '<' || line[i+1] == '>')) {
@@ -111,11 +111,11 @@ Lexer::Lexer(string fileName) {
     i = 0;
   }
 
-  /*
+
   for (i = 0; i < vec.size(); i++) {
     cout << vec[i] << endl;
   }
-   */
+
 
   this->array = vec;
 }
