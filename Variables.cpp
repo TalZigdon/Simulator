@@ -143,111 +143,285 @@ void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
 
   if (!simMap["airspeed-indicator_indicated-speed-kt"]->isBindedFromRightToLeft()) {
     simMap["airspeed-indicator_indicated-speed-kt"]->setValue(vec[0]);
+    if (fromPathToVar.count(simMap["airspeed-indicator_indicated-speed-kt"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["airspeed-indicator_indicated-speed-kt"]->GetSim()]]->setValue(vec[0]);
+      i1->setVariables(fromPathToVar[simMap["airspeed-indicator_indicated-speed-kt"]->GetSim()], vec[0]);
+    }
   }
-  if (!simMap["time_warp"]->isBindedFromRightToLeft())
+  if (!simMap["time_warp"]->isBindedFromRightToLeft()) {
     simMap["time_warp"]->setValue((vec[1]));
-
-  if (!simMap["switches_magnetos"]->isBindedFromRightToLeft())
+    if (fromPathToVar.count(simMap["time_warp"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["time_warp"]->GetSim()]]->setValue(vec[1]);
+      i1->setVariables(fromPathToVar[simMap["time_warp"]->GetSim()], vec[1]);
+    }
+  }
+  if (!simMap["switches_magnetos"]->isBindedFromRightToLeft()) {
     simMap["switches_magnetos"]->setValue(vec[2]);
-
-  if (!simMap["heading-indicator_offset-deg"]->isBindedFromRightToLeft())
+    if (fromPathToVar.count(simMap["switches_magnetos"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["switches_magnetos"]->GetSim()]]->setValue(vec[2]);
+      i1->setVariables(fromPathToVar[simMap["switches_magnetos"]->GetSim()], vec[2]);
+    }
+  }
+  if (!simMap["heading-indicator_offset-deg"]->isBindedFromRightToLeft()) {
     simMap["heading-indicator_offset-deg"]->setValue(vec[3]);
-
-  if (!simMap["altimeter_indicated-altitude-ft"]->isBindedFromRightToLeft())
+    if (fromPathToVar.count(simMap["heading-indicator_offset-deg"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["heading-indicator_offset-deg"]->GetSim()]]->setValue(vec[3]);
+      i1->setVariables(fromPathToVar[simMap["heading-indicator_offset-deg"]->GetSim()], vec[3]);
+    }
+  }
+  if (!simMap["altimeter_indicated-altitude-ft"]->isBindedFromRightToLeft()) {
     simMap["altimeter_indicated-altitude-ft"]->setValue(vec[4]);
-
-  if (!simMap["altimeter_pressure-alt-ft"]->isBindedFromRightToLeft())
+    if (fromPathToVar.count(simMap["altimeter_indicated-altitude-ft"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["altimeter_indicated-altitude-ft"]->GetSim()]]->setValue(vec[4]);
+      i1->setVariables(fromPathToVar[simMap["altimeter_indicated-altitude-ft"]->GetSim()], vec[4]);
+    }
+  }
+  if (!simMap["altimeter_pressure-alt-ft"]->isBindedFromRightToLeft()) {
     simMap["altimeter_pressure-alt-ft"]->setValue(vec[5]);
-
-  if (!simMap["attitude-indicator_indicated-pitch-deg"]->isBindedFromRightToLeft())
+    if (fromPathToVar.count(simMap["altimeter_pressure-alt-ft"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["altimeter_pressure-alt-ft"]->GetSim()]]->setValue(vec[5]);
+      i1->setVariables(fromPathToVar[simMap["altimeter_pressure-alt-ft"]->GetSim()], vec[5]);
+    }
+  }
+  if (!simMap["attitude-indicator_indicated-pitch-deg"]->isBindedFromRightToLeft()) {
     simMap["attitude-indicator_indicated-pitch-deg"]->setValue(vec[6]);
+    if (fromPathToVar.count(simMap["attitude-indicator_indicated-pitch-deg"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["attitude-indicator_indicated-pitch-deg"]->GetSim()]]->setValue(vec[6]);
+      i1->setVariables(fromPathToVar[simMap["attitude-indicator_indicated-pitch-deg"]->GetSim()], vec[6]);
+    }
+  }
 
-  if (!simMap["attitude-indicator_indicated-roll-deg"]->isBindedFromRightToLeft())
+  if (!simMap["attitude-indicator_indicated-roll-deg"]->isBindedFromRightToLeft()) {
     simMap["attitude-indicator_indicated-roll-deg"]->setValue(vec[7]);
+    if (fromPathToVar.count(simMap["attitude-indicator_indicated-roll-deg"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["attitude-indicator_indicated-roll-deg"]->GetSim()]]->setValue(vec[7]);
+      i1->setVariables(fromPathToVar[simMap["attitude-indicator_indicated-roll-deg"]->GetSim()], vec[7]);
+    }
+  }
 
-  if (!simMap["attitude-indicator_internal-pitch-deg"]->isBindedFromRightToLeft())
+  if (!simMap["attitude-indicator_internal-pitch-deg"]->isBindedFromRightToLeft()) {
     simMap["attitude-indicator_internal-pitch-deg"]->setValue(vec[8]);
-
-  if (!simMap["attitude-indicator_internal-roll-deg"]->isBindedFromRightToLeft())
+    if (fromPathToVar.count(simMap["attitude-indicator_internal-pitch-deg"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["attitude-indicator_internal-pitch-deg"]->GetSim()]]->setValue(vec[8]);
+      i1->setVariables(fromPathToVar[simMap["attitude-indicator_internal-pitch-deg"]->GetSim()], vec[8]);
+    }
+  }
+//
+  if (!simMap["attitude-indicator_internal-roll-deg"]->isBindedFromRightToLeft()) {
     simMap["attitude-indicator_internal-roll-deg"]->setValue(vec[9]);
+    if (fromPathToVar.count(simMap["attitude-indicator_internal-roll-deg"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["attitude-indicator_internal-roll-deg"]->GetSim()]]->setValue(vec[9]);
+      i1->setVariables(fromPathToVar[simMap["attitude-indicator_internal-roll-deg"]->GetSim()], vec[9]);
+    }
+  }
 
-  if (!simMap["encoder_indicated-altitude-ft"]->isBindedFromRightToLeft())
+  if (!simMap["encoder_indicated-altitude-ft"]->isBindedFromRightToLeft()) {
     simMap["encoder_indicated-altitude-ft"]->setValue(vec[10]);
+    if (fromPathToVar.count(simMap["encoder_indicated-altitude-ft"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["encoder_indicated-altitude-ft"]->GetSim()]]->setValue(vec[10]);
+      i1->setVariables(fromPathToVar[simMap["encoder_indicated-altitude-ft"]->GetSim()], vec[10]);
+    }
+  }
 
-  if (!simMap["encoder_pressure-alt-ft"]->isBindedFromRightToLeft())
+  if (!simMap["encoder_pressure-alt-ft"]->isBindedFromRightToLeft()) {
     simMap["encoder_pressure-alt-ft"]->setValue(vec[11]);
+    if (fromPathToVar.count(simMap["encoder_pressure-alt-ft"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["encoder_pressure-alt-ft"]->GetSim()]]->setValue(vec[11]);
+      i1->setVariables(fromPathToVar[simMap["encoder_pressure-alt-ft"]->GetSim()], vec[11]);
+    }
+  }
 
-  if (!simMap["gps_indicated-altitude-ft"]->isBindedFromRightToLeft())
+  if (!simMap["gps_indicated-altitude-ft"]->isBindedFromRightToLeft()) {
     simMap["gps_indicated-altitude-ft"]->setValue(vec[12]);
+    if (fromPathToVar.count(simMap["gps_indicated-altitude-ft"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["gps_indicated-altitude-ft"]->GetSim()]]->setValue(vec[12]);
+      i1->setVariables(fromPathToVar[simMap["gps_indicated-altitude-ft"]->GetSim()], vec[12]);
+    }
+  }
 
-  if (!simMap["gps_indicated-ground-speed-kt"]->isBindedFromRightToLeft())
+  if (!simMap["gps_indicated-ground-speed-kt"]->isBindedFromRightToLeft()) {
     simMap["gps_indicated-ground-speed-kt"]->setValue(vec[13]);
+    if (fromPathToVar.count(simMap["gps_indicated-ground-speed-kt"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["gps_indicated-ground-speed-kt"]->GetSim()]]->setValue(vec[13]);
+      i1->setVariables(fromPathToVar[simMap["gps_indicated-ground-speed-kt"]->GetSim()], vec[13]);
+    }
+  }
 
-  if (!simMap["gps_indicated-vertical-speed"]->isBindedFromRightToLeft())
+  if (!simMap["gps_indicated-vertical-speed"]->isBindedFromRightToLeft()) {
     simMap["gps_indicated-vertical-speed"]->setValue(vec[14]);
+    if (fromPathToVar.count(simMap["gps_indicated-vertical-speed"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["gps_indicated-vertical-speed"]->GetSim()]]->setValue(vec[14]);
+      i1->setVariables(fromPathToVar[simMap["gps_indicated-vertical-speed"]->GetSim()], vec[14]);
+    }
+  }
 
-  if (!simMap["indicated-heading-deg"]->isBindedFromRightToLeft())
+  if (!simMap["indicated-heading-deg"]->isBindedFromRightToLeft()) {
     simMap["indicated-heading-deg"]->setValue(vec[15]);
+    if (fromPathToVar.count(simMap["indicated-heading-deg"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["indicated-heading-deg"]->GetSim()]]->setValue(vec[15]);
+      i1->setVariables(fromPathToVar[simMap["indicated-heading-deg"]->GetSim()], vec[15]);
+    }
+  }
 
-  if (!simMap["magnetic-compass_indicated-heading-deg"]->isBindedFromRightToLeft())
+  if (!simMap["magnetic-compass_indicated-heading-deg"]->isBindedFromRightToLeft()) {
     simMap["magnetic-compass_indicated-heading-deg"]->setValue(vec[16]);
+    if (fromPathToVar.count(simMap["magnetic-compass_indicated-heading-deg"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["magnetic-compass_indicated-heading-deg"]->GetSim()]]->setValue(vec[16]);
+      i1->setVariables(fromPathToVar[simMap["magnetic-compass_indicated-heading-deg"]->GetSim()], vec[16]);
+    }
+  }
 
-  if (!simMap["slip-skid-ball_indicated-slip-skid"]->isBindedFromRightToLeft())
+  if (!simMap["slip-skid-ball_indicated-slip-skid"]->isBindedFromRightToLeft()) {
     simMap["slip-skid-ball_indicated-slip-skid"]->setValue(vec[17]);
+    if (fromPathToVar.count(simMap["slip-skid-ball_indicated-slip-skid"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["slip-skid-ball_indicated-slip-skid"]->GetSim()]]->setValue(vec[17]);
+      i1->setVariables(fromPathToVar[simMap["slip-skid-ball_indicated-slip-skid"]->GetSim()], vec[17]);
+    }
+  }
 
-  if (!simMap["turn-indicator_indicated-turn-rate"]->isBindedFromRightToLeft())
+  if (!simMap["turn-indicator_indicated-turn-rate"]->isBindedFromRightToLeft()) {
     simMap["turn-indicator_indicated-turn-rate"]->setValue(vec[18]);
+    if (fromPathToVar.count(simMap["switches_master-avionics"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["switches_master-avionics"]->GetSim()]]->setValue(vec[18]);
+      i1->setVariables(fromPathToVar[simMap["switches_master-avionics"]->GetSim()], vec[18]);
+    }
+  }
 
-  if (!simMap["vertical-speed-indicator_indicated-speed-fpm"]->isBindedFromRightToLeft())
+  if (!simMap["vertical-speed-indicator_indicated-speed-fpm"]->isBindedFromRightToLeft()) {
     simMap["vertical-speed-indicator_indicated-speed-fpm"]->setValue(vec[19]);
+    if (fromPathToVar.count(simMap["switches_master-avionics"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["switches_master-avionics"]->GetSim()]]->setValue(vec[19]);
+      i1->setVariables(fromPathToVar[simMap["switches_master-avionics"]->GetSim()], vec[19]);
+    }
+  }
 
-  if (!simMap["flight_aileron"]->isBindedFromRightToLeft())
+  if (!simMap["flight_aileron"]->isBindedFromRightToLeft()) {
     simMap["flight_aileron"]->setValue(vec[20]);
+    if (fromPathToVar.count(simMap["flight_aileron"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["flight_aileron"]->GetSim()]]->setValue(vec[20]);
+      i1->setVariables(fromPathToVar[simMap["flight_aileron"]->GetSim()], vec[20]);
+    }
+  }
 
-  if (!simMap["flight_elevator"]->isBindedFromRightToLeft())
+  if (!simMap["flight_elevator"]->isBindedFromRightToLeft()) {
     simMap["flight_elevator"]->setValue(vec[21]);
+    if (fromPathToVar.count(simMap["flight_elevator"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["flight_elevator"]->GetSim()]]->setValue(vec[21]);
+      i1->setVariables(fromPathToVar[simMap["flight_elevator"]->GetSim()], vec[21]);
+    }
+  }
 
-  if (!simMap["flight_rudder"]->isBindedFromRightToLeft())
+  if (!simMap["flight_rudder"]->isBindedFromRightToLeft()) {
     simMap["flight_rudder"]->setValue(vec[22]);
+    if (fromPathToVar.count(simMap["flight_rudder"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["flight_rudder"]->GetSim()]]->setValue(vec[22]);
+      i1->setVariables(fromPathToVar[simMap["flight_rudder"]->GetSim()], vec[22]);
+    }
+  }
 
-  if (!simMap["flight_flaps"]->isBindedFromRightToLeft())
+  if (!simMap["flight_flaps"]->isBindedFromRightToLeft()) {
     simMap["flight_flaps"]->setValue(vec[23]);
+    if (fromPathToVar.count(simMap["flight_flaps"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["flight_flaps"]->GetSim()]]->setValue(vec[23]);
+      i1->setVariables(fromPathToVar[simMap["flight_flaps"]->GetSim()], vec[23]);
+    }
+  }
 
-  if (!simMap["engine_throttle"]->isBindedFromRightToLeft())
+  if (!simMap["engine_throttle"]->isBindedFromRightToLeft()) {
     simMap["engine_throttle"]->setValue(vec[24]);
+    if (fromPathToVar.count(simMap["engine_throttle"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["engine_throttle"]->GetSim()]]->setValue(vec[24]);
+      i1->setVariables(fromPathToVar[simMap["engine_throttle"]->GetSim()], vec[24]);
+    }
+  }
 
-  if (!simMap["current-engine_throttle"]->isBindedFromRightToLeft())
+  if (!simMap["current-engine_throttle"]->isBindedFromRightToLeft()) {
     simMap["current-engine_throttle"]->setValue(vec[25]);
+    if (fromPathToVar.count(simMap["current-engine_throttle"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["current-engine_throttle"]->GetSim()]]->setValue(vec[25]);
+      i1->setVariables(fromPathToVar[simMap["current-engine_throttle"]->GetSim()], vec[25]);
+    }
+  }
 
-  if (!simMap["switches_master-avionics"]->isBindedFromRightToLeft())
+  if (!simMap["switches_master-avionics"]->isBindedFromRightToLeft()) {
     simMap["switches_master-avionics"]->setValue(vec[26]);
+    if (fromPathToVar.count(simMap["switches_master-avionics"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["switches_master-avionics"]->GetSim()]]->setValue(vec[26]);
+      i1->setVariables(fromPathToVar[simMap["switches_master-avionics"]->GetSim()], vec[26]);
+    }
+  }
 
-  if (!simMap["switches_starter"]->isBindedFromRightToLeft())
+  if (!simMap["switches_starter"]->isBindedFromRightToLeft()) {
     simMap["switches_starter"]->setValue(vec[27]);
+    if (fromPathToVar.count(simMap["switches_starter"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["switches_starter"]->GetSim()]]->setValue(vec[27]);
+      i1->setVariables(fromPathToVar[simMap["switches_starter"]->GetSim()], vec[27]);
+    }
+  }
 
-  if (!simMap["active-engine_auto-start"]->isBindedFromRightToLeft())
+  if (!simMap["active-engine_auto-start"]->isBindedFromRightToLeft()) {
     simMap["active-engine_auto-start"]->setValue(vec[28]);
+    if (fromPathToVar.count(simMap["active-engine_auto-start"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["active-engine_auto-start"]->GetSim()]]->setValue(vec[28]);
+      i1->setVariables(fromPathToVar[simMap["active-engine_auto-start"]->GetSim()], vec[28]);
+    }
+  }
 
-  if (!simMap["flight_speedbrake"]->isBindedFromRightToLeft())
+  if (!simMap["flight_speedbrake"]->isBindedFromRightToLeft()) {
     simMap["flight_speedbrake"]->setValue(vec[29]);
+    if (fromPathToVar.count(simMap["flight_speedbrake"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["flight_speedbrake"]->GetSim()]]->setValue(vec[29]);
+      i1->setVariables(fromPathToVar[simMap["flight_speedbrake"]->GetSim()], vec[29]);
+    }
+  }
 
-  if (!simMap["c172p_brake-parking"]->isBindedFromRightToLeft())
+  if (!simMap["c172p_brake-parking"]->isBindedFromRightToLeft()) {
     simMap["c172p_brake-parking"]->setValue(vec[30]);
+    if (fromPathToVar.count(simMap["c172p_brake-parking"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["c172p_brake-parking"]->GetSim()]]->setValue(vec[30]);
+      i1->setVariables(fromPathToVar[simMap["c172p_brake-parking"]->GetSim()], vec[30]);
+    }
+  }
 
-  if (!simMap["engine_primer"]->isBindedFromRightToLeft())
+  if (!simMap["engine_primer"]->isBindedFromRightToLeft()) {
     simMap["engine_primer"]->setValue(vec[31]);
+    if (fromPathToVar.count(simMap["engine_primer"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["engine_primer"]->GetSim()]]->setValue(vec[31]);
+      i1->setVariables(fromPathToVar[simMap["engine_primer"]->GetSim()], vec[31]);
+    }
+  }
 
-  if (!simMap["current-engine_mixture"]->isBindedFromRightToLeft())
+  if (!simMap["current-engine_mixture"]->isBindedFromRightToLeft()) {
     simMap["current-engine_mixture"]->setValue(vec[32]);
+    if (fromPathToVar.count(simMap["current-engine_mixture"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["current-engine_mixture"]->GetSim()]]->setValue(vec[32]);
+      i1->setVariables(fromPathToVar[simMap["current-engine_mixture"]->GetSim()], vec[32]);
+    }
+  }
 
-  if (!simMap["switches_master-bat"]->isBindedFromRightToLeft())
+  if (!simMap["switches_master-bat"]->isBindedFromRightToLeft()) {
     simMap["switches_master-bat"]->setValue(vec[33]);
+    if (fromPathToVar.count(simMap["switches_master-bat"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["switches_master-bat"]->GetSim()]]->setValue(vec[33]);
+      i1->setVariables(fromPathToVar[simMap["switches_master-bat"]->GetSim()], vec[33]);
+    }
+  }
 
-  if (!simMap["switches_master-alt"]->isBindedFromRightToLeft())
+  if (!simMap["switches_master-alt"]->isBindedFromRightToLeft()) {
     simMap["switches_master-alt"]->setValue(vec[34]);
+    if (fromPathToVar.count(simMap["switches_master-alt"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["switches_master-alt"]->GetSim()]]->setValue(vec[34]);
+      i1->setVariables(fromPathToVar[simMap["switches_master-alt"]->GetSim()], vec[34]);
+    }
+  }
 
-  if (!simMap["engine_rpm"]->isBindedFromRightToLeft())
+  if (!simMap["engine_rpm"]->isBindedFromRightToLeft()) {
     simMap["engine_rpm"]->setValue(vec[35]);
+    if (fromPathToVar.count(simMap["engine_rpm"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["engine_rpm"]->GetSim()]]->setValue(vec[35]);
+      i1->setVariables(fromPathToVar[simMap["engine_rpm"]->GetSim()], vec[35]);
+    }
+  }
 
   // unlock map
   mapLock.unlock();
@@ -255,9 +429,10 @@ void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
   //  for (int i = 0; i < vec.size(); i++) {
 //    symbolsValues[i] = vec[i];
 //  }
+
 }
 bool Variables::UpdateValueOfProgramVar(string str, double newVal) {
-  if(programMap.count(str)){
+  if (programMap.count(str)) {
     programMap[str]->setValue(newVal);
     return true;
   }

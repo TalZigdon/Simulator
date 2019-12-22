@@ -17,6 +17,7 @@ int DefineVarCommand::execute(vector<string> vector, int index) {
   for (std::pair<std::string, Var*> element : Variables::getInstance()->getSimMap()) {
     if (strcmp(element.second->GetSim().c_str(), simLocation.c_str()) == 0) {
       Variables::getInstance()->programMap[name] = element.second;
+      Variables::getInstance()->fromPathToVar[simLocation] = name;
     }
   }
   //  bool simIsEffectedByVar = false;

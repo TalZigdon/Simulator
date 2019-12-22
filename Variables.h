@@ -2,8 +2,8 @@
 // Created by tal on 12.12.2019.
 //
 
-#ifndef SIMULATOR__VARIABLES_H_
-#define SIMULATOR__VARIABLES_H_
+#ifndef SIMULATOR_VARIABLES_H
+#define SIMULATOR_VARIABLES_H
 #include <unordered_map>
 #include <mutex>
 #include "string"
@@ -21,6 +21,7 @@ class Variables {
   static Variables *instance;
   Variables();
  public:
+  unordered_map<string,string> fromPathToVar;
   unordered_map<string, Var*> programMap;
   queue<Var*> queOfVarsToPushToTheServer;
   thread thr1;
@@ -67,4 +68,4 @@ class Variables {
 
 
 
-#endif //SIMULATOR__VARIABLES_H_
+#endif //SIMULATOR_VARIABLES_H

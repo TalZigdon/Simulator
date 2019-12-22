@@ -2,8 +2,8 @@
 // Created by yoelsh on 07/11/2019.
 //
 
-#ifndef SHUNTINGYARD__SHUNTINGYARD_H_
-#define SHUNTINGYARD__SHUNTINGYARD_H_
+#ifndef SHUNTINGYARD_SHUNTINGYARD_H
+#define SHUNTINGYARD_SHUNTINGYARD_H
 
 #include "Expression.h"
 #include "Var.h"
@@ -105,9 +105,9 @@ class Interpreter {
   Expression *createExp();
   void generateVarAndVal(string token);
   void setVariables(string vars1);
-  //void setVariables(string varName,double val);
+  void setVariables(string varName,double val);
   //void addVariable(string name, string val);
   map<string,double> GetVars();
 };
 
-#endif //EX1__EX1_H_
+#endif //EX1_EX1_H

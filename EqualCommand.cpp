@@ -5,11 +5,9 @@
 #include <algorithm>
 #include "EqualCommand.h"
 int EqualCommand::execute(vector<string> vector, int index) {
-    //insert to the map of the interpreter.
+  //insert to the map of the interpreter.
   vector[index].erase(std::remove_if(vector[index].begin(), vector[index].end(), ::isspace), vector[index].end());
-  if(Variables::getInstance()->programMap[vector[index]]->isBindedFromRightToLeft())
-    Variables::getInstance()->addVarToMap(vector[index]);
+  Variables::getInstance()->addVarToMap(vector[index]);
 
   return 1;
 }
-
