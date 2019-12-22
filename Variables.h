@@ -40,7 +40,7 @@ class Variables {
     return instance;
   }
   void InsertToQueOfVarsToPushToTheServer(Var* var){
-    mapLock.lock();
+    mapLock.try_lock();
     string str = var->GetSim();
     double val = var ->GetValue();
     Var* temp = new Var(val,str,false);

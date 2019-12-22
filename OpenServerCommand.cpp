@@ -80,7 +80,7 @@ void readFromServer(int client_socket) {
   string temp = "";
   size_t indexOfFirstEndOfLine;
   while (true) {
-    mutex_lock.lock();
+    mutex_lock.try_lock();
     bool firstIteration = true;
     char buffer[1024] = {0};
     int valread = read(client_socket, buffer, 1024);

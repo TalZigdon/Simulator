@@ -11,7 +11,7 @@ void SendAndGetMassages(int client_socket) {
   bool signThatThereIsSomeThingToPush;
   string information;
   while (true) {
-    mutex_lock1.lock();
+    mutex_lock1.try_lock();
     while (!Variables::getInstance()->queOfVarsToPushToTheServer.empty()) {
       information = "set " + Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetSim().substr(1) + " " +
           to_string(Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetValue()) + "\r\n";

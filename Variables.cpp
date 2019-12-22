@@ -21,7 +21,7 @@ Variables::Variables() {
 
 void Variables::InitializeSymbols() {
   // locking map
-  mapLock.lock();
+  mapLock.try_lock();
 
   simMap["airspeed-indicator_indicated-speed-kt"] =
       new Var(0, "/instrumentation/airspeed-indicator/indicated-speed-kt", false);
@@ -139,7 +139,7 @@ void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
   vector<double> vec1;
 
   // lock map
-  mapLock.lock();
+  mapLock.try_lock();
 
   if (!simMap["airspeed-indicator_indicated-speed-kt"]->isBindedFromRightToLeft()) {
     simMap["airspeed-indicator_indicated-speed-kt"]->setValue(vec[0]);
