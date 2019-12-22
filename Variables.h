@@ -41,6 +41,9 @@ class Variables {
   }
   void InsertToQueOfVarsToPushToTheServer(Var* var){
     mapLock.lock();
+    string str = var->GetSim();
+    double val = var ->GetValue();
+    Var* temp = new Var()
     queOfVarsToPushToTheServer.push(var);
     mapLock.unlock();
   }

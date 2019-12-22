@@ -425,6 +425,7 @@ void Interpreter::generateVarAndVal(string token) {
   //add the new var to the map!
   this->vars.insert(pair<string, double>(var, stod(val)));
   if(Variables::getInstance()->UpdateValueOfProgramVar(var,Variables::getInstance()->doShuntingYard(val))){
+    Variables::getInstance()->UpdateValueOfProgramVar(var,Variables::getInstance()->doShuntingYard(val));
     Variables::getInstance()->InsertToQueOfVarsToPushToTheServer(Variables::getInstance()->programMap[var]);
   }
 }

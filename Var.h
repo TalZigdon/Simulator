@@ -7,13 +7,13 @@
 #include <string>
 using namespace std;
 class Var {
-  int value;
+  double value;
   string simPath;
   bool bindedFromRightToLeft;
  public:
-  Var(int value, const string &sim, bool is_input);
+  Var(double value, const string &sim, bool is_input);
   const string &GetSim() const;
-  int GetValue() const;
+  double GetValue() const;
 
   bool isBindedFromRightToLeft() const;
 
