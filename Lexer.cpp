@@ -17,14 +17,12 @@ Lexer::Lexer(string fileName) {
   }
 
 
+
+
   //cross on the file line-line
   while (!file.eof()) {
     insertedLine = false;
     getline(file, line);
-    auto t = line.find("while");
-    if (t != string::npos) {
-      int dfl = 0;
-    }
 
     string checkVar = line.substr(0, 3);
     string checkWhile = line.substr(0, 5);
@@ -70,6 +68,10 @@ Lexer::Lexer(string fileName) {
           // insert "val"
           string temp1 = temp.substr(check1, 3);
           vec.insert(vec.end(), temp1);
+          if (temp.length() > 3 && temp.substr(4, temp.length() - 4).find_first_of("->") == string::npos &&
+              temp.substr(4, temp.length() - 4).find_first_of("<-") == string::npos) {
+            vec.insert(vec.end(), temp.substr(4, temp.length() - 4));
+          }
           // if it is a new var being assigned
           if (temp.find_first_of('=') != string::npos) {
             vec.insert(vec.end(), temp.substr(4, temp.size() - 4));
@@ -96,6 +98,8 @@ Lexer::Lexer(string fileName) {
             }
           }
         } else {
+          if (temp.find(34) == string::npos)
+            temp.erase(std::remove(temp.begin(), temp.end(), 32), temp.end());
           vec.insert(vec.end(), temp);
         }
         //initialize the parameters.
@@ -111,7 +115,8 @@ Lexer::Lexer(string fileName) {
   for (i = 0; i < vec.size(); i++) {
     cout << vec[i] << endl;
   }
-*/
+  */
+
 
   this->array = vec;
 }
