@@ -17,9 +17,11 @@ using namespace std;
 #include "ShuntingYard.h"
 #include "EqualCommand.h"
 #include "WhileCommand.h"
+#include "FuncCommand.h"
 class Parser {
   unordered_map<string, Command *> commands;
  public:
+  int createFuncCommand(vector<string> array, int index);
   Parser(vector<string> array);
   unordered_map<string,Command*> getMap();
   virtual ~Parser();

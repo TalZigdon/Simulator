@@ -4,6 +4,7 @@
 
 #include <mutex>
 #include "Parser.h"
+#include "FuncCommand.h"
 
 /*std::mutex mutex_lock;
 
@@ -55,6 +56,8 @@ Parser::Parser(vector<string> array) {
       if (commands.count(array[index]) > 0) {
         c = commands[array[index]];
         index += c->execute(array, index);
+      } else {
+        index += createFuncCommand(array, index);
       }
     }
     //cout << "after index" << index << endl;
@@ -64,9 +67,24 @@ unordered_map<string, Command *> Parser::getMap() {
   return this->commands;
 }
 Parser::~Parser() {
-  for(pair<string,Command*> element: commands){
+  for (pair<string, Command *> element: commands) {
     delete element.second;
   }
 
+}
+int Parser::createFuncCommand(vector<string> vector1, int index) {
+  vector<string> funcVec;
+  int countParent = 1;
+  int countIndex = index + 4;
+  while (countParent) {
+    funcVec.push_back(vector1[countIndex]);
+    countIndex++;
+    if (vector1[countIndex] == "{")
+      countParent++;
+    if (vector1[countIndex] == "}")
+      countParent--;
+  }
+  commands[vector1[index]] = new FuncCommand(funcVec, vector1[index + 2]);
+  return countIndex - index + 1;
 }
 

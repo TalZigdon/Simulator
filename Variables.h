@@ -78,9 +78,4 @@ class Variables {
     delete(i1);
   };
 };
-
-
-
-
-
 #endif //SIMULATOR_VARIABLES_H
