@@ -1,5 +1,5 @@
 openDataServer(5400)
-connectControlClient(" 1010.0.2.2",5402)
+connectControlClient("10.0.2.2",5402)
 var warp -> sim("/sim/time/warp")
 var magnetos -> sim("/controls/switches/magnetos")
 var throttle -> sim("/controls/engines/current-engine/throttle")
