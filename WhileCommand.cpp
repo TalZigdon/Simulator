@@ -13,7 +13,7 @@ int WhileCommand::execute(vector<string> vector1, int index) {
   }
   flag = IsConditionIsTrue(vector1[index + 1]);
   while (flag) {
-    Parser* par = new Parser(tempStringToParsInWhile);
+    Parser *par = new Parser(tempStringToParsInWhile);
     flag = IsConditionIsTrue(vector1[index + 1]);
     delete par;
   }

@@ -105,9 +105,8 @@ class Interpreter {
   Expression *createExp();
   void generateVarAndVal(string token);
   void setVariables(string vars1);
-  void setVariables(string varName,double val);
-  //void addVariable(string name, string val);
-  map<string,double> GetVars();
+  void setVariables(string varName, double val);
+  map<string, double> GetVars();
 };
 
 #endif //EX1_EX1_H

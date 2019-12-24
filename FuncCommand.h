@@ -10,7 +10,7 @@ class FuncCommand : public Command {
   vector<string> funcVec;
   string var;
  public:
-  FuncCommand(vector<string> vec, string val);
+  FuncCommand(vector<string> vec, string var1);
   int execute(vector<string> vector, int index) override;
 
 };

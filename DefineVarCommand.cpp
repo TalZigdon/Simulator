@@ -25,13 +25,5 @@ int DefineVarCommand::execute(vector<string> vector, int index) {
       Variables::getInstance()->i1->setVariables(name, 0);
     }
   }
-  //  bool simIsEffectedByVar = false;
-//  string name = vector[index + 1];
-//  double value;
-//  if(vector[index + 2] == "->")
-//    simIsEffectedByVar = true;
-////initialize the value to 0
-//  Var *v = new Var(0, name, simIsEffectedByVar);
-//  Variables::getInstance()->setVar(vector[index], v);
   return 5;
 }

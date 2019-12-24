@@ -23,19 +23,19 @@ class Parser {
  public:
   int createFuncCommand(vector<string> array, int index);
   Parser(vector<string> array);
-  unordered_map<string,Command*> getMap();
+  unordered_map<string, Command *> getMap();
   virtual ~Parser();
  private:
   unordered_map<string, Command> map;
   void addCommandsToMap() {
-      commands["var"] = new DefineVarCommand();
-      commands["Print"] = new PrintCommand();
-      commands["openDataServer"] = new OpenServerCommand();
-      commands["connectControlClient"] = new ConnectControlClientCommand();
-      commands["if"] = new IfCommand();
-      commands["Sleep"] = new SleepCommand();
-      commands["="] = new EqualCommand();
-      commands["while"] = new WhileCommand();
+    commands["var"] = new DefineVarCommand();
+    commands["Print"] = new PrintCommand();
+    commands["openDataServer"] = new OpenServerCommand();
+    commands["connectControlClient"] = new ConnectControlClientCommand();
+    commands["if"] = new IfCommand();
+    commands["Sleep"] = new SleepCommand();
+    commands["="] = new EqualCommand();
+    commands["while"] = new WhileCommand();
   }
 };
 

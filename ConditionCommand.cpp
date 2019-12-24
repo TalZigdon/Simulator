@@ -59,29 +59,35 @@ bool ConditionCommand::IsConditionIsTrue(std::string stringOfCondition) {
     stringOfCondition.erase(0, posOfAllText + stringOfCondition.length());
     os = 6;
   }
-  switch(os){
+  switch (os) {
     case 1:
-      if(Variables::getInstance()->doShuntingYard(tokenOfFirsExpression) == Variables::getInstance()->doShuntingYard(tokenOfSecondExpression))
+      if (Variables::getInstance()->doShuntingYard(tokenOfFirsExpression)
+          == Variables::getInstance()->doShuntingYard(tokenOfSecondExpression))
         return true;
       break;
     case 2:
-      if(Variables::getInstance()->doShuntingYard(tokenOfFirsExpression) >= Variables::getInstance()->doShuntingYard(tokenOfSecondExpression))
+      if (Variables::getInstance()->doShuntingYard(tokenOfFirsExpression)
+          >= Variables::getInstance()->doShuntingYard(tokenOfSecondExpression))
         return true;
       break;
     case 3:
-      if(Variables::getInstance()->doShuntingYard(tokenOfFirsExpression) <= Variables::getInstance()->doShuntingYard(tokenOfSecondExpression))
+      if (Variables::getInstance()->doShuntingYard(tokenOfFirsExpression)
+          <= Variables::getInstance()->doShuntingYard(tokenOfSecondExpression))
         return true;
       break;
     case 4:
-      if(Variables::getInstance()->doShuntingYard(tokenOfFirsExpression) != Variables::getInstance()->doShuntingYard(tokenOfSecondExpression))
+      if (Variables::getInstance()->doShuntingYard(tokenOfFirsExpression)
+          != Variables::getInstance()->doShuntingYard(tokenOfSecondExpression))
         return true;
       break;
     case 5:
-      if(Variables::getInstance()->doShuntingYard(tokenOfFirsExpression) < Variables::getInstance()->doShuntingYard(tokenOfSecondExpression))
+      if (Variables::getInstance()->doShuntingYard(tokenOfFirsExpression)
+          < Variables::getInstance()->doShuntingYard(tokenOfSecondExpression))
         return true;
       break;
     case 6:
-      if(Variables::getInstance()->doShuntingYard(tokenOfFirsExpression) > Variables::getInstance()->doShuntingYard(tokenOfSecondExpression))
+      if (Variables::getInstance()->doShuntingYard(tokenOfFirsExpression)
+          > Variables::getInstance()->doShuntingYard(tokenOfSecondExpression))
         return true;
       break;
     default:break;

@@ -20,7 +20,7 @@ int EqualCommand::execute(vector<string> vector, int index) {
   // splitting the string by the delimiter
   var = vector[index].substr(0, pos);
   val = Variables::getInstance()->doShuntingYard(vector[index].erase(0, pos + delimiter.length()));
-  vector[index] ="";
+  vector[index] = "";
   vector[index] = var + "=" + to_string(val);
   //and vector[index] to var map
   Variables::getInstance()->addVarToMap(vector[index]);

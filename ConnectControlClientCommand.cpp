@@ -2,13 +2,11 @@
 // Created by tal on 12.12.2019.
 //
 
-#include <cstring>
 #include <mutex>
 #include "ConnectControlClientCommand.h"
 #include <string>
 std::mutex mutex_lock1;
 void SendAndGetMassages(int client_socket) {
-  bool signThatThereIsSomeThingToPush;
   string information;
   while (true) {
     mutex_lock1.try_lock();
@@ -56,13 +54,7 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
     }
 
     //if here we made a connection
-    //char hello[] = "Hi from client";
-    //int is_sent = send(client_socket, hello, strlen(hello), 0);
-    //if (is_sent == -1) {
-    // std::cout << "Error sending message" << std::endl;
-    //} else {
     Variables::getInstance()->thr2 = thread(SendAndGetMassages, client_socket);
-    //}
     return 3;
   }
 }

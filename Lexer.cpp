@@ -5,7 +5,7 @@
 #include <algorithm>
 #include "Lexer.h"
 Lexer::Lexer(string fileName) {
-  int i = 0;
+  unsigned i = 0;
   string line, temp = "";
   vector<string> vec;
   fstream file;
@@ -15,9 +15,6 @@ Lexer::Lexer(string fileName) {
   if (!file) {
     cout << "bad file" << endl;
   }
-
-
-
 
   //cross on the file line-line
   while (!file.eof()) {
@@ -116,7 +113,6 @@ Lexer::Lexer(string fileName) {
     cout << vec[i] << endl;
   }
   */
-
 
   this->array = vec;
 }

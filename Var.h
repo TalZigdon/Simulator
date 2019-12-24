@@ -21,7 +21,7 @@ class Var {
 
   void setSim(const string &sim);
 
-  void setBindedFromLeftToRight(bool bindedFromRightToLeft);
+  void setBindedFromLeftToRight(bool bindedFromRightToLeft1);
 
 };
 

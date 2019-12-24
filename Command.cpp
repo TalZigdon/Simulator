@@ -6,3 +6,8 @@
 int Command::execute(vector<string> vector, int index) {
   return 0;
 }
+Command::~Command() {
+
+}
+
+

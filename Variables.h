@@ -14,16 +14,16 @@
 // a singleton class
 class Variables {
  private:
-  unordered_map<string, Var*> simMap;
+  unordered_map<string, Var *> simMap;
   vector<double> symbolsValues;
   mutex mapLock;
   static Variables *instance;
   Variables();
  public:
   Interpreter *i1;
-  unordered_map<string,string> fromPathToVar;
-  unordered_map<string, Var*> programMap;
-  queue<Var*> queOfVarsToPushToTheServer;
+  unordered_map<string, string> fromPathToVar;
+  unordered_map<string, Var *> programMap;
+  queue<Var *> queOfVarsToPushToTheServer;
   thread thr1;
   thread thr2;
   //check if the object is already exists, if not,make a new one, else return the last one.
@@ -39,23 +39,23 @@ class Variables {
       instance = new Variables();
     return instance;
   }
-  void InsertToQueOfVarsToPushToTheServer(Var* var){
+  void InsertToQueOfVarsToPushToTheServer(Var *var) {
     mapLock.try_lock();
     string str = var->GetSim();
-    double val = var ->GetValue();
-    Var* temp = new Var(val,str,false);
+    double val = var->GetValue();
+    Var *temp = new Var(val, str, false);
     queOfVarsToPushToTheServer.push(temp);
     mapLock.unlock();
   }
-  void setVar(string const v, Var* var) {
+  void setVar(string const v, Var *var) {
     programMap[v] = var;
   }
 
-  unordered_map<string, Var*> getProgramMap() {
+  unordered_map<string, Var *> getProgramMap() {
     return programMap;
   }
 
-  unordered_map<string, Var*> getSimMap(){
+  unordered_map<string, Var *> getSimMap() {
     return simMap;
   }
 
@@ -65,17 +65,17 @@ class Variables {
 
  protected:
   virtual ~Variables() {
-    for(pair<string,Var*> element: programMap){
+    for (pair<string, Var *> element: programMap) {
       delete (element.second);
     }
-    for(pair<string,Var*> element: simMap){
+    for (pair<string, Var *> element: simMap) {
       delete (element.second);
     }
-    while(!queOfVarsToPushToTheServer.empty()){
+    while (!queOfVarsToPushToTheServer.empty()) {
       delete queOfVarsToPushToTheServer.front();
       queOfVarsToPushToTheServer.pop();
     }
-    delete(i1);
+    delete (i1);
   };
 };
 #endif //SIMULATOR_VARIABLES_H

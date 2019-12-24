@@ -12,7 +12,7 @@ int IfCommand::execute(vector<string> vector, int index) {
     return command.execute(vector, index + 2) + 2;
   }
   ////there is a problem here, we need to jump over all the indexes in the if.
-  while(vector[count] != "}"){
+  while (vector[count] != "}") {
     count++;
   }
   return count - index + 1;

@@ -2,7 +2,6 @@
 // Created by tal on 12.12.2019.
 //
 
-#include <cstring>
 #include "Variables.h"
 Variables *Variables::instance = 0;
 
