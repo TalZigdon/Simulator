@@ -4,6 +4,8 @@
 //
 #include "Command.h"
 int Command::execute(vector<string> vector, int index) {
+  if(index)
+    vector.back();
   return 0;
 }
 Command::~Command() {
