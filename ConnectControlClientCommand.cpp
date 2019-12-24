@@ -8,7 +8,7 @@
 std::mutex mutex_lock1;
 void SendAndGetMassages(int client_socket) {
   string information;
-  while (true) {
+  while (Variables::getInstance()->threadFlag) {
     mutex_lock1.try_lock();
     while (!Variables::getInstance()->queOfVarsToPushToTheServer.empty()) {
       information = "set " + Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetSim().substr(1) + " " +

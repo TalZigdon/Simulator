@@ -33,7 +33,7 @@ void readFromServer(int client_socket) {
   string remainingChunk = "";
   string temp = "";
   size_t indexOfFirstEndOfLine;
-  while (true) {
+  while (Variables::getInstance()->threadFlag) {
     mutex_lock.try_lock();
     bool firstIteration = true;
     char buffer[1024] = {0};

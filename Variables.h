@@ -26,6 +26,7 @@ class Variables {
   queue<Var *> queOfVarsToPushToTheServer;
   thread thr1;
   thread thr2;
+  bool threadFlag = true;
   //check if the object is already exists, if not,make a new one, else return the last one.
   double doShuntingYard(string str);
   void addVarToMap(string str);

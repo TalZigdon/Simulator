@@ -3,6 +3,7 @@
 #include "vector"
 #include "Lexer.h"
 #include "Parser.h"
+#include "Variables.h"
 
 vector<string> lexer(string fileName);
 
@@ -13,8 +14,7 @@ int main(int argc, char **argv) {
     Lexer lex = Lexer(argv[1]);
     Parser *parser1 = new Parser(lex.array);
     delete parser1;
-    Variables::getInstance()->thr1.join();
-    Variables::getInstance()->thr2.join();
+    Variables::getInstance()->threadFlag = false;
   }
   return 0;
 }

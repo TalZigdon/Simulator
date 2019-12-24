@@ -1,19 +1,21 @@
 //
 // Created by tal on 12.12.2019.
 //
-
+#include "Parser.h"
 #include "IfCommand.h"
-int IfCommand::execute(vector<string> vector, int index) {
-  ////there is a problem here, because if the flag is false we need to
-  /// jump over the next indexes and we dont know how much we need to jump
-  flag = IsConditionIsTrue(vector[index + 1]);
-  int count = index;
+int IfCommand::execute(vector<string> vector1, int index) {
+  vector<string> tempStringToParsInWhile;
+  int saveTheNumberOfTheLastIndexInWhile = index + 3;
+  while (vector1[saveTheNumberOfTheLastIndexInWhile] != "}") {
+    tempStringToParsInWhile.push_back(vector1[saveTheNumberOfTheLastIndexInWhile]);
+    saveTheNumberOfTheLastIndexInWhile++;
+  }
+  flag = IsConditionIsTrue(vector1[index + 1]);
   if (flag) {
-    return command.execute(vector, index + 2) + 2;
+    Parser *par = new Parser(tempStringToParsInWhile);
+    flag = IsConditionIsTrue(vector1[index + 1]);
+    delete par;
   }
-  ////there is a problem here, we need to jump over all the indexes in the if.
-  while (vector[count] != "}") {
-    count++;
-  }
-  return count - index + 1;
+  //check how much indexes are in the while!
+  return saveTheNumberOfTheLastIndexInWhile - index + 1;
 }
