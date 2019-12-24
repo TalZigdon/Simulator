@@ -50,7 +50,7 @@ int ConnectControlClientCommand::execute(vector<string> vector, int index) {
       std::cerr << "Could not connect to host server" << std::endl;
       return -2;
     } else {
-      std::cout << "Client is now connected to server" << std::endl;
+      //std::cout << "Client is now connected to server" << std::endl;
     }
 
     //if here we made a connection

@@ -89,12 +89,12 @@ int OpenServerCommand::execute(vector<string> vector, int index) {
     std::cerr << "Error during listening command" << std::endl;
     return -3;
   } else {
-    std::cout << "Server is now listening ..." << std::endl;
+    //std::cout << "Server is now listening ..." << std::endl;
   }
 
   // accepting a client
   int client_socket1 = accept(socketfd, (struct sockaddr *) &address,
-                             (socklen_t *) &address);
+                              (socklen_t *) &address);
 
   if (client_socket1 == -1) {
     std::cerr << "Error accepting client" << std::endl;
