@@ -18,7 +18,7 @@ void SendAndGetMassages(int client_socket) {
       if (is_sent < 0) {
         std::cout << "Error sending message" << std::endl;
       }
-      //////////////////////must check if the delete works good.!
+      ////////////////////must check if the delete works good.!
       delete Variables::getInstance()->queOfVarsToPushToTheServer.front();
       Variables::getInstance()->queOfVarsToPushToTheServer.pop();
       information = "";
