@@ -15,6 +15,10 @@ int main(int argc, char **argv) {
     Parser *parser1 = new Parser(lex.array);
     delete parser1;
     Variables::getInstance()->threadFlag = false;
+    if(Variables::getInstance()->thr1.joinable())
+      Variables::getInstance()->thr1.join();
+    if(Variables::getInstance()->thr2.joinable())
+      Variables::getInstance()->thr2.join();
     delete (Variables::getInstance());
   }
   return 0;
