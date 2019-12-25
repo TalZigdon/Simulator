@@ -13,8 +13,8 @@ void SendAndGetMassages(int client_socket) {
     while (!Variables::getInstance()->queOfVarsToPushToTheServer.empty()) {
       information = "set " + Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetSim().substr(1) + " " +
           to_string(Variables::getInstance()->queOfVarsToPushToTheServer.front()->GetValue()) + "\r\n";
-//      int is_sent = send(client_socket, information.c_str(), information.length(), MSG_NOSIGNAL);
-      int is_sent = send(client_socket, information.c_str(), information.length(), 0);
+      int is_sent = send(client_socket, information.c_str(), information.length(), MSG_NOSIGNAL);
+//      int is_sent = send(client_socket, information.c_str(), information.length(), 0);
       if (is_sent < 0) {
         std::cout << "Error sending message" << std::endl;
       }
