@@ -41,7 +41,7 @@ class Variables {
     return instance;
   }
   void InsertToQueOfVarsToPushToTheServer(Var *var) {
-    mapLock.try_lock();
+    mapLock.lock();
     string str = var->GetSim();
     double val = var->GetValue();
     Var *temp = new Var(val, str, false);
@@ -64,16 +64,19 @@ class Variables {
     return programMap[v];
   }
 
- protected:
   virtual ~Variables() {
-    for (pair<string, Var *> element: programMap) {
-      delete (element.second);
-    }
+    threadFlag = false;
+    //for(pair<string,Var*>:iterator iter = simMap.)
     for (pair<string, Var *> element: simMap) {
-      delete (element.second);
+      if (element.second != NULL) {
+        Var *var = element.second;
+        //simMap.erase(element);
+        delete (var);
+      }
     }
     while (!queOfVarsToPushToTheServer.empty()) {
-      delete queOfVarsToPushToTheServer.front();
+      if (queOfVarsToPushToTheServer.front() != NULL)
+        delete queOfVarsToPushToTheServer.front();
       queOfVarsToPushToTheServer.pop();
     }
     delete (i1);

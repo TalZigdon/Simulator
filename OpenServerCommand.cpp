@@ -56,6 +56,7 @@ void readFromServer(int client_socket) {
     remainingChunk = str;
     mutex_lock.unlock();
   }
+  close(client_socket);
 }
 
 int OpenServerCommand::execute(vector<string> vector, int index) {

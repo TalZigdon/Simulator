@@ -25,6 +25,7 @@ void SendAndGetMassages(int client_socket) {
     }
     mutex_lock1.unlock();
   }
+  close(client_socket);
 }
 int ConnectControlClientCommand::execute(vector<string> vector, int index) {
   {

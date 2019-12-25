@@ -15,6 +15,7 @@ int main(int argc, char **argv) {
     Parser *parser1 = new Parser(lex.array);
     delete parser1;
     Variables::getInstance()->threadFlag = false;
+    delete (Variables::getInstance());
   }
   return 0;
 }

@@ -125,10 +125,10 @@ void Variables::InitializeSymbols() {
       new Var(0, "/controls/switches/master-bat", false);
 
   simMap["switches_master-alt"] =
-      new Var(0, ">/controls/switches/master-alt", false);
+      new Var(0, "/controls/switches/master-alt", false);
 
   simMap["engine_rpm"] =
-      new Var(0, "/engines/engine/rpm", false);
+      new Var(1, "/engines/engine/rpm", false);
 
   // unlocking map
   mapLock.unlock();
@@ -280,17 +280,17 @@ void Variables::UpdateSymbolsValueFromServer(vector<double> vec) {
 
   if (!simMap["turn-indicator_indicated-turn-rate"]->isBindedFromRightToLeft()) {
     simMap["turn-indicator_indicated-turn-rate"]->setValue(vec[18]);
-    if (fromPathToVar.count(simMap["switches_master-avionics"]->GetSim()) > 0) {
-      programMap[fromPathToVar[simMap["switches_master-avionics"]->GetSim()]]->setValue(vec[18]);
-      i1->setVariables(fromPathToVar[simMap["switches_master-avionics"]->GetSim()], vec[18]);
+    if (fromPathToVar.count(simMap["turn-indicator_indicated-turn-rate"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["turn-indicator_indicated-turn-rate"]->GetSim()]]->setValue(vec[18]);
+      i1->setVariables(fromPathToVar[simMap["turn-indicator_indicated-turn-rate"]->GetSim()], vec[18]);
     }
   }
 
   if (!simMap["vertical-speed-indicator_indicated-speed-fpm"]->isBindedFromRightToLeft()) {
     simMap["vertical-speed-indicator_indicated-speed-fpm"]->setValue(vec[19]);
-    if (fromPathToVar.count(simMap["switches_master-avionics"]->GetSim()) > 0) {
-      programMap[fromPathToVar[simMap["switches_master-avionics"]->GetSim()]]->setValue(vec[19]);
-      i1->setVariables(fromPathToVar[simMap["switches_master-avionics"]->GetSim()], vec[19]);
+    if (fromPathToVar.count(simMap["vertical-speed-indicator_indicated-speed-fpm"]->GetSim()) > 0) {
+      programMap[fromPathToVar[simMap["vertical-speed-indicator_indicated-speed-fpm"]->GetSim()]]->setValue(vec[19]);
+      i1->setVariables(fromPathToVar[simMap["vertical-speed-indicator_indicated-speed-fpm"]->GetSim()], vec[19]);
     }
   }
 
