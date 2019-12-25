@@ -66,11 +66,14 @@ class Variables {
 
   virtual ~Variables() {
     threadFlag = false;
-    //for(pair<string,Var*>:iterator iter = simMap.)
+    if (thr1.joinable())
+      thr1.join();
+    if (thr2.joinable())
+      thr2.join();
+    delete (Variables::getInstance());
     for (pair<string, Var *> element: simMap) {
       if (element.second != NULL) {
         Var *var = element.second;
-        //simMap.erase(element);
         delete (var);
       }
     }
