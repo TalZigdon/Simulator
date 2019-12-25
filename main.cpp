@@ -1,11 +1,6 @@
-#include "Command.h"
-#include "map"
 #include "vector"
 #include "Lexer.h"
 #include "Parser.h"
-#include "Variables.h"
-
-vector<string> lexer(string fileName);
 
 int main(int argc, char **argv) {
   if (argc <= 1) {
