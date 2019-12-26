@@ -56,5 +56,8 @@ takeoff(var x) {
 	Sleep(250)
    }
 }
-takeoff(1000)
+var y = 1
+if y > 0 {
+    takeoff(1000)
+}
 Print("done")

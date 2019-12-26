@@ -23,11 +23,13 @@ Lexer::Lexer(string fileName) {
 
     string checkVar = line.substr(0, 3);
     string checkWhile = line.substr(0, 5);
+    string checkIf = line.substr(0, 2);
     auto find = line.find_first_of("=");
 
     // if it's an assignment of existing var
     if (!(checkVar == "var" || checkVar == "Var") &&
-        !(checkWhile == "while" || checkWhile == "While") && find != string::npos) {
+        !(checkWhile == "while" || checkWhile == "While") &&
+        !(checkIf == "if" || checkIf == "If") && find != string::npos) {
       line.erase(std::remove(line.begin(), line.end(), '\t'), line.end());
       vec.insert(vec.end(), line);
       continue;
@@ -45,14 +47,24 @@ Lexer::Lexer(string fileName) {
         temp.erase(std::remove(temp.begin(), temp.end(), '\t'), temp.end());
         auto check = temp.find("while");
         auto check1 = temp.find("var");
+        auto check3 = temp.find("if");
         // if it is a while command - split correctly
-        if (check != string::npos) {
+        if (check != string::npos || check3 != string::npos) {
+          string temp1;
           // insert while
-          string temp1 = temp.substr(check, 5);
+          if (check != string::npos) {
+            temp1 = temp.substr(check, 5);
+          } else {    // insert if
+            temp1 = temp.substr(check3, 2);
+          }
           vec.insert(vec.end(), temp1);
           // insert condition
           auto check2 = temp.size() - temp1.size();
-          temp1 = temp.substr(check + 6, check2);
+          if (check != string::npos) {
+            temp1 = temp.substr(check + 6, check2);
+          } else {    // insert if
+            temp1 = temp.substr(check + 3, check2);
+          }
           temp1 = temp1.substr(0, temp1.size() - 2);
           temp1.erase(std::remove_if(temp1.begin(), temp1.end(), ::isspace), temp1.end());
           vec.insert(vec.end(), temp1);
@@ -70,10 +82,10 @@ Lexer::Lexer(string fileName) {
             vec.insert(vec.end(), temp.substr(4, temp.length() - 4));
           }
           // if it is a new var being assigned
-          if (temp.find_first_of('=') != string::npos) {
-            vec.insert(vec.end(), temp.substr(4, temp.size() - 4));
-            i = line.size();
-          }
+//          if (temp.find_first_of('=') != string::npos) {
+//            vec.insert(vec.end(), temp.substr(4, temp.size() - 4));
+//            i = line.size();
+//          }
             // if its a new var being binded
           else {
             // insert name of val
@@ -108,11 +120,12 @@ Lexer::Lexer(string fileName) {
     i = 0;
   }
 
-/*
+
   for (i = 0; i < vec.size(); i++) {
     cout << vec[i] << endl;
   }
-  */
+
+
 
   this->array = vec;
 }
