@@ -58,6 +58,7 @@ takeoff(var x) {
 }
 var y = 1
 if y > 0 {
-    takeoff(1000)
+   Print("Good Job Yoel")
 }
+takeoff(1000)
 Print("done")
