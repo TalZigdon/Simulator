@@ -24,12 +24,13 @@ Lexer::Lexer(string fileName) {
     string checkVar = line.substr(0, 3);
     string checkWhile = line.substr(0, 5);
     string checkIf = line.substr(0, 2);
-    auto find = line.find_first_of("=");
+    auto findEqual = line.find_first_of("=");
+    auto findQuote = line.find_first_of('"');
 
     // if it's an assignment of existing var
     if (!(checkVar == "var" || checkVar == "Var") &&
         !(checkWhile == "while" || checkWhile == "While") &&
-        !(checkIf == "if" || checkIf == "If") && find != string::npos) {
+        !(checkIf == "if" || checkIf == "If") && (findEqual != string::npos && findQuote == string::npos)) {
       line.erase(std::remove(line.begin(), line.end(), '\t'), line.end());
       vec.insert(vec.end(), line);
       continue;
@@ -40,6 +41,14 @@ Lexer::Lexer(string fileName) {
       while (i < line.size() && line[i] != '(' && line[i] != ')' && line[i] != ',') {
         temp += line[i];
         i++;
+        if(line[i-1] == '"') {
+          while(line[i] != '"') {
+            temp += line[i];
+            i++;
+          }
+          temp+= line[i];
+          i++;
+        }
       }
 
       if (!insertedLine) {
