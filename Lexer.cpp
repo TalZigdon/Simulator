@@ -9,7 +9,8 @@ Lexer::Lexer(string fileName) {
   string line, temp = "";
   vector<string> vec;
   fstream file;
-  bool insertedLine = false;
+
+  // open file
   file.open(fileName, ios::in);
   if (!file) {
     cout << "bad file" << endl;
@@ -17,21 +18,26 @@ Lexer::Lexer(string fileName) {
 
   //cross on the file line-line
   while (!file.eof()) {
-    insertedLine = false;
     getline(file, line);
 
+    // check for specific cases
     string checkVar = line.substr(0, 3);
     string checkWhile = line.substr(0, 5);
     string checkIf = line.substr(0, 2);
     auto findEqual = line.find_first_of("=");
     auto findQuote = line.find_first_of('"');
 
-    // if it's an assignment of existing var
-    if (!(checkVar == "var" || checkVar == "Var") &&
-        !(checkWhile == "while" || checkWhile == "While") &&
-        !(checkIf == "if" || checkIf == "If") && (findEqual != string::npos && findQuote == string::npos)) {
+    // if it's an assignment of existing var.
+    // we want to ignore the = sign if its a while/if/var command or a string
+    if (!(checkVar == "var" || checkVar == "Var") &&    //var
+        !(checkWhile == "while" || checkWhile == "While") &&    //while
+        !(checkIf == "if" || checkIf == "If") &&    //if
+        (findEqual != string::npos && findQuote == string::npos)) {   //string. plus check for equal sign
+      // erase spaces
       line.erase(std::remove(line.begin(), line.end(), '\t'), line.end());
+      // insert whole line
       vec.insert(vec.end(), line);
+      // skip to next line
       continue;
     }
 
@@ -40,97 +46,97 @@ Lexer::Lexer(string fileName) {
       while (i < line.size() && line[i] != '(' && line[i] != ')' && line[i] != ',') {
         temp += line[i];
         i++;
+        // if its a quote
         if(line[i-1] == '"') {
+          // insert until quote finished
           while(line[i] != '"') {
             temp += line[i];
             i++;
           }
+          // insert last "
           temp+= line[i];
           i++;
         }
       }
 
-      if (!insertedLine) {
-        //insert the strings to the vector.
-        temp.erase(std::remove(temp.begin(), temp.end(), '\t'), temp.end());
-        auto check = temp.find("while");
-        auto check1 = temp.find("var");
-        auto check3 = temp.find("if");
-        // if it is a while command - split correctly
-        if (check != string::npos || check3 != string::npos) {
-          string temp1;
-          // insert while
-          if (check != string::npos) {
-            temp1 = temp.substr(check, 5);
-          } else {    // insert if
-            temp1 = temp.substr(check3, 2);
-          }
-          vec.insert(vec.end(), temp1);
-          // insert condition
-          auto check2 = temp.size() - temp1.size();
-          if (check != string::npos) {
-            temp1 = temp.substr(check + 6, check2);
-          } else {    // insert if
-            temp1 = temp.substr(check + 3, check2);
-          }
-          temp1 = temp1.substr(0, temp1.size() - 2);
-          temp1.erase(std::remove_if(temp1.begin(), temp1.end(), ::isspace), temp1.end());
-          vec.insert(vec.end(), temp1);
-          // insert the {
-          temp1 = temp.substr(temp.size() - 1, 1);
-          vec.insert(vec.end(), temp1);
+      //erase tabs
+      temp.erase(std::remove(temp.begin(), temp.end(), '\t'), temp.end());
+      // what kind of line is it?
+      auto check = temp.find("while");
+      auto check1 = temp.find("var");
+      auto check3 = temp.find("if");
+      // if it is a while command - split correctly
+      if (check != string::npos || check3 != string::npos) {
+        string temp1;
+        // insert while
+        if (check != string::npos) {
+          temp1 = temp.substr(check, 5);
+        } else {    // insert if
+          temp1 = temp.substr(check3, 2);
         }
-          // if it is a var command - split correctly
-        else if (check1 != string::npos) {
-          // insert "val"
-          string temp1 = temp.substr(check1, 3);
-          vec.insert(vec.end(), temp1);
-          if (temp.length() > 3 && temp.substr(4, temp.length() - 4).find_first_of("->") == string::npos &&
-              temp.substr(4, temp.length() - 4).find_first_of("<-") == string::npos) {
-            vec.insert(vec.end(), temp.substr(4, temp.length() - 4));
-          }
-          // if it is a new var being assigned
-//          if (temp.find_first_of('=') != string::npos) {
-//            vec.insert(vec.end(), temp.substr(4, temp.size() - 4));
-//            i = line.size();
-//          }
-            // if its a new var being binded
-          else {
-            // insert name of val
-            auto check2 = temp.find("<-");
-            if (check2 == string::npos) {
-              check2 = temp.find("->");
-            }
-            if (check2 != string::npos) {
-              temp1 = temp.substr(check1 + 4, check2 - (check1 + 4));
-              temp1.erase(std::remove_if(temp1.begin(), temp1.end(), ::isspace), temp1.end());
-              vec.insert(vec.end(), temp1);
-              // insert arrow
-              temp1 = temp.substr(check2, 2);
-              vec.insert(vec.end(), temp1);
-              // insert sim
-              check2 = temp.find("sim");
-              temp1 = temp.substr(check2, 3);
-              vec.insert(vec.end(), temp1);
-            }
-          }
-        } else {
-          if (temp.find(34) == string::npos)
-            temp.erase(std::remove(temp.begin(), temp.end(), 32), temp.end());
-          vec.insert(vec.end(), temp);
+        vec.insert(vec.end(), temp1);
+        // insert condition
+        auto check2 = temp.size() - temp1.size();
+        if (check != string::npos) {
+          temp1 = temp.substr(check + 6, check2);
+        } else {    // insert if
+          temp1 = temp.substr(check + 3, check2);
         }
-        //initialize the parameters.
-        temp = "";
-        i++;
+        temp1 = temp1.substr(0, temp1.size() - 2);
+        temp1.erase(std::remove_if(temp1.begin(), temp1.end(), ::isspace), temp1.end());
+        vec.insert(vec.end(), temp1);
+        // insert the {
+        temp1 = temp.substr(temp.size() - 1, 1);
+        vec.insert(vec.end(), temp1);
       }
+      // if it is a var command - split correctly
+      else if (check1 != string::npos) {
+        // insert "val"
+        string temp1 = temp.substr(check1, 3);
+        vec.insert(vec.end(), temp1);
+        if (temp.length() > 3 && temp.substr(4, temp.length() - 4).find_first_of("->") == string::npos &&
+            temp.substr(4, temp.length() - 4).find_first_of("<-") == string::npos) {
+          vec.insert(vec.end(), temp.substr(4, temp.length() - 4));
+        }
+        // if its a new var being binded
+        else {
+          // insert name of val
+          auto check2 = temp.find("<-");
+          if (check2 == string::npos) {
+            check2 = temp.find("->");
+          }
+          if (check2 != string::npos) {
+            temp1 = temp.substr(check1 + 4, check2 - (check1 + 4));
+            temp1.erase(std::remove_if(temp1.begin(), temp1.end(), ::isspace), temp1.end());
+            vec.insert(vec.end(), temp1);
+            // insert arrow
+            temp1 = temp.substr(check2, 2);
+            vec.insert(vec.end(), temp1);
+            // insert sim
+            check2 = temp.find("sim");
+            temp1 = temp.substr(check2, 3);
+            vec.insert(vec.end(), temp1);
+          }
+        }
+      } else {    //every other case
+        if (temp.find(34) == string::npos)    // if string is without quote ,delete spaces
+          temp.erase(std::remove(temp.begin(), temp.end(), 32), temp.end());
+        vec.insert(vec.end(), temp);
+      }
+      //initialize the parameters.
+      temp = "";
+      i++;
     }
     //initialize i for the next line.(if there is more line)
     i = 0;
   }
 
-  /*for (i = 0; i < vec.size(); i++) {
+  // print for checks
+  /*
+  for (i = 0; i < vec.size(); i++) {
     cout << vec[i] << endl;
-  }*/
+  }
+   */
 
   this->array = vec;
 }
