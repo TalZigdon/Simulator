@@ -44,6 +44,14 @@ Lexer::Lexer(string fileName) {
     //insert a string and split the strings by ' ', '(', ')', ','
     while (i < line.size()) {
       while (i < line.size() && line[i] != '(' && line[i] != ')' && line[i] != ',') {
+        // if condition - insert all line. will be splitted later
+        if(checkWhile == "while" || checkWhile == "While" || checkIf == "if" || checkIf == "If") {
+          temp = line;
+          i = line.size();
+          break;
+        }
+
+        // every other case
         temp += line[i];
         i++;
         // if its a quote
@@ -84,12 +92,14 @@ Lexer::Lexer(string fileName) {
         }
         temp1 = temp1.substr(0, temp1.size() - 2);
         temp1.erase(std::remove_if(temp1.begin(), temp1.end(), ::isspace), temp1.end());
+        temp1.erase(std::remove(temp1.begin(), temp1.end(), '('), temp1.end());
+        temp1.erase(std::remove(temp1.begin(), temp1.end(), ')'), temp1.end());
         vec.insert(vec.end(), temp1);
         // insert the {
         temp1 = temp.substr(temp.size() - 1, 1);
         vec.insert(vec.end(), temp1);
       }
-      // if it is a var command - split correctly
+        // if it is a var command - split correctly
       else if (check1 != string::npos) {
         // insert "val"
         string temp1 = temp.substr(check1, 3);
@@ -98,7 +108,7 @@ Lexer::Lexer(string fileName) {
             temp.substr(4, temp.length() - 4).find_first_of("<-") == string::npos) {
           vec.insert(vec.end(), temp.substr(4, temp.length() - 4));
         }
-        // if its a new var being binded
+          // if its a new var being binded
         else {
           // insert name of val
           auto check2 = temp.find("<-");
@@ -132,11 +142,11 @@ Lexer::Lexer(string fileName) {
   }
 
   // print for checks
-  /*
+/*
   for (i = 0; i < vec.size(); i++) {
     cout << vec[i] << endl;
   }
-   */
+  */
 
   this->array = vec;
 }
