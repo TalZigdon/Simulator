@@ -9,6 +9,7 @@ int main(int argc, char **argv) {
     Lexer lex = Lexer(argv[1]);
     Parser *parser1 = new Parser(lex.array);
     delete parser1;
+    delete Variables::getInstance();
   }
   return 0;
 }
