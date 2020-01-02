@@ -70,7 +70,6 @@ class Variables {
       thr1.join();
     if (thr2.joinable())
       thr2.join();
-    delete (Variables::getInstance());
     for (pair<string, Var *> element: simMap) {
       if (element.second != NULL) {
         Var *var = element.second;

@@ -35,6 +35,7 @@ Lexer::Lexer(string fileName) {
         (findEqual != string::npos && findQuote == string::npos)) {   //string. plus check for equal sign
       // erase spaces
       line.erase(std::remove(line.begin(), line.end(), '\t'), line.end());
+      line.erase(std::remove(line.begin(), line.end(), '\r'), line.end());
       // insert whole line
       vec.insert(vec.end(), line);
       // skip to next line
@@ -69,6 +70,7 @@ Lexer::Lexer(string fileName) {
 
       //erase tabs
       temp.erase(std::remove(temp.begin(), temp.end(), '\t'), temp.end());
+      temp.erase(std::remove(temp.begin(), temp.end(), '\r'), temp.end());
       // what kind of line is it?
       auto check = temp.find("while");
       auto check1 = temp.find("var");
@@ -96,8 +98,9 @@ Lexer::Lexer(string fileName) {
         temp1.erase(std::remove(temp1.begin(), temp1.end(), ')'), temp1.end());
         vec.insert(vec.end(), temp1);
         // insert the {
-        temp1 = temp.substr(temp.size() - 1, 1);
-        vec.insert(vec.end(), temp1);
+//        temp1 = temp.substr(temp.size() - 1, 1);
+//        temp1.erase(std::remove(temp1.begin(), temp1.end(), '\r'), temp1.end());
+        vec.insert(vec.end(), "{");
       }
         // if it is a var command - split correctly
       else if (check1 != string::npos) {
@@ -106,6 +109,7 @@ Lexer::Lexer(string fileName) {
         vec.insert(vec.end(), temp1);
         if (temp.length() > 3 && temp.substr(4, temp.length() - 4).find_first_of("->") == string::npos &&
             temp.substr(4, temp.length() - 4).find_first_of("<-") == string::npos) {
+          temp.erase(std::remove(temp.begin(), temp.end(), '\r'), temp.end());
           vec.insert(vec.end(), temp.substr(4, temp.length() - 4));
         }
           // if its a new var being binded
@@ -131,7 +135,8 @@ Lexer::Lexer(string fileName) {
       } else {    //every other case
         if (temp.find(34) == string::npos)    // if string is without quote ,delete spaces
           temp.erase(std::remove(temp.begin(), temp.end(), 32), temp.end());
-        vec.insert(vec.end(), temp);
+        if(temp != "\r" && temp != "\t" && temp != "\r" && temp != " "&& temp != "")
+          vec.insert(vec.end(), temp);
       }
       //initialize the parameters.
       temp = "";
@@ -142,11 +147,11 @@ Lexer::Lexer(string fileName) {
   }
 
   // print for checks
-/*
+
   for (i = 0; i < vec.size(); i++) {
     cout << vec[i] << endl;
   }
-  */
+
 
   this->array = vec;
 }

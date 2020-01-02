@@ -7,7 +7,7 @@ int PrintCommand::execute(vector<string> vector, int index) {
   //check if there "" in the string or its a number.
   char ch = 34;
   if (vector[index + 1].find(ch) != string::npos)
-    cout << vector[index + 1] << endl;
+    cout << vector[index + 1].substr(1,vector[index+1].size() - 2) << endl;
   else if (Variables::getInstance()->programMap.count(vector[index + 1])) {
     cout << Variables::getInstance()->programMap[vector[index + 1]]->GetValue() << endl;
   } else {
