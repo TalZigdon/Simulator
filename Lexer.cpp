@@ -92,14 +92,13 @@ Lexer::Lexer(string fileName) {
         } else {    // insert if
           temp1 = temp.substr(check + 3, check2);
         }
-        temp1 = temp1.substr(0, temp1.size() - 2);
+        //temp1 = temp1.substr(0, temp1.size() - 1);
         temp1.erase(std::remove_if(temp1.begin(), temp1.end(), ::isspace), temp1.end());
         temp1.erase(std::remove(temp1.begin(), temp1.end(), '('), temp1.end());
         temp1.erase(std::remove(temp1.begin(), temp1.end(), ')'), temp1.end());
+        temp1.erase(std::remove(temp1.begin(), temp1.end(), '{'), temp1.end());
         vec.insert(vec.end(), temp1);
         // insert the {
-//        temp1 = temp.substr(temp.size() - 1, 1);
-//        temp1.erase(std::remove(temp1.begin(), temp1.end(), '\r'), temp1.end());
         vec.insert(vec.end(), "{");
       }
         // if it is a var command - split correctly
@@ -148,9 +147,11 @@ Lexer::Lexer(string fileName) {
 
   // print for checks
 
+  /*
   for (i = 0; i < vec.size(); i++) {
     cout << vec[i] << endl;
   }
+   */
 
 
   this->array = vec;
