@@ -33,4 +33,5 @@ We used [Github](https://github.com/giladashe/flightSimulator) for version contr
 **Authors**
 
 Tal Zigdon and Yoel Sherwin.
+
 https://github.com/TalZig/Simulator
